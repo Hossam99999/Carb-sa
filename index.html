@@ -20,7 +20,6 @@
             --card-bg: rgba(16, 16, 16, 0.7);
             --border-glow: rgba(255, 255, 255, 0.05);
         }
-        
         body { 
             background-color: var(--bg-dark); 
             color: #f8fafc; 
@@ -28,23 +27,19 @@
             overflow-x: hidden; 
             -webkit-font-smoothing: antialiased;
         }
-
         h1, h2, h3, button, span, input, select, p, textarea {
             font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif !important;
         }
-        
         .glass { 
             background: rgba(12, 12, 12, 0.8); 
             backdrop-filter: blur(20px); 
             -webkit-backdrop-filter: blur(20px); 
             border: 1px solid rgba(255, 255, 255, 0.06); 
         }
-        
         .squircle-xl { border-radius: 24px; }
         .squircle-lg { border-radius: 18px; }
         .squircle-md { border-radius: 12px; }
         .squircle-sm { border-radius: 8px; }
-        
         .snack-card { 
             background: var(--card-bg); 
             border: 1px solid var(--border-glow); 
@@ -52,32 +47,24 @@
             margin-bottom: 10px; 
             transition: transform 0.1s ease;
         }
-        .snack-card:active { 
-            transform: scale(0.98); 
-        }
-        
+        .snack-card:active { transform: scale(0.98); }
         .selected-card { 
             background: rgba(34, 197, 94, 0.03) !important; 
             border: 1px solid rgba(34, 197, 94, 0.3) !important; 
         }
-        
         .active-category { 
             color: var(--primary) !important; 
             font-weight: bold !important;
             background: rgba(34, 197, 94, 0.1) !important; 
         }
-        
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        
         input, select, textarea { 
             caret-color: var(--primary); 
             background-color: rgba(20, 20, 20, 0.9) !important; 
             color: white !important; 
         }
-
         .modal-animate { animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
         header, footer { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; }
         .header-hidden { transform: translateY(-100%); opacity: 0; }
         .footer-hidden { transform: translateY(100%); opacity: 0; }
@@ -90,31 +77,35 @@
             <h2 class="text-3xl font-bold text-white tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">Carbs sa</h2>
             <p class="text-[10px] text-green-500 font-bold uppercase tracking-widest mt-1.5">Dosage Pro Edition</p>
         </div>
-        
         <div class="flex flex-col gap-5 relative z-[510]">
-            <button onclick="enterAppSection('snacks')" style="width: 100%; display: block; -webkit-tap-highlight-color: transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center transition-all active:scale-95 shadow-2xl py-8 outline-none cursor-pointer">
+            <button onclick="enterAppSection('snacks')" style="width:100%;display:block;-webkit-tap-highlight-color:transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center transition-all active:scale-95 shadow-2xl py-8 outline-none cursor-pointer">
                 <div class="w-14 h-14 bg-zinc-900/50 rounded-full flex items-center justify-center text-2xl mb-3 border border-white/5 pointer-events-none">🍿</div>
                 <h3 class="text-base font-bold text-white pointer-events-none">سناكات وحلويات</h3>
                 <p class="text-xs text-zinc-400 mt-1 pointer-events-none">شيبسات، شوكولاتة، حلويات ومعمول...</p>
             </button>
-            
-            <button onclick="enterAppSection('restaurants')" style="width: 100%; display: block; -webkit-tap-highlight-color: transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center transition-all active:scale-95 shadow-2xl py-8 outline-none cursor-pointer">
+            <button onclick="enterAppSection('restaurants')" style="width:100%;display:block;-webkit-tap-highlight-color:transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center transition-all active:scale-95 shadow-2xl py-8 outline-none cursor-pointer">
                 <div class="w-14 h-14 bg-zinc-900/50 rounded-full flex items-center justify-center text-2xl mb-3 border border-white/5 pointer-events-none">🍔</div>
                 <h3 class="text-base font-bold text-white pointer-events-none">مطاعم ووجبات</h3>
                 <p class="text-xs text-zinc-400 mt-1 pointer-events-none">الوجبات السريعة، الكافيهات والمطاعم...</p>
+            </button>
+            <button onclick="openAISection()" style="width:100%;display:block;-webkit-tap-highlight-color:transparent;" class="glass squircle-xl px-5 py-4 flex items-center gap-4 transition-all active:scale-95 outline-none cursor-pointer border border-green-500/10">
+                <div class="w-10 h-10 bg-zinc-900/50 rounded-full flex items-center justify-center text-lg border border-white/5 pointer-events-none flex-shrink-0">🤖</div>
+                <div class="text-right pointer-events-none">
+                    <h3 class="text-sm font-bold text-white">احسب كاربك بالذكاء الاصطناعي</h3>
+                    <p class="text-[10px] text-zinc-500 mt-0.5">أرسل صورة أو اكتب اسم الأكل</p>
+                </div>
             </button>
         </div>
     </div>
 
     <div id="appMainContent" class="hidden relative z-10">
-        
         <header id="appHeader" class="sticky top-0 z-40 bg-black/90 border-b border-white/5 p-4 backdrop-blur-xl">
             <div class="max-w-md mx-auto flex flex-col gap-3.5">
                 <div class="flex justify-between items-center w-full">
                     <div class="flex items-center gap-2">
                         <button onclick="exitToWelcomeScreen()" class="w-8 h-8 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-xs active:scale-95 text-zinc-400 font-bold ml-1">↩</button>
                         <div id="adminBackupZone" class="flex items-center"></div>
-                        <h1 onclick="handleAdminSecretClick()" class="text-lg font-bold text-white tracking-tight cursor-pointer active:opacity-70">Carbs sa</h1>
+                        <h1 class="text-lg font-bold text-white tracking-tight">Carbs sa</h1>
                     </div>
                     <div id="headerControlsRow" class="flex items-center gap-2">
                         <button onclick="openFeedbackModal()" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm active:scale-95 transition-transform">📣</button>
@@ -156,7 +147,6 @@
                 <div class="flex-1 px-6 flex flex-col justify-between pt-5">
                     <div class="text-right">
                         <h2 id="detName" class="text-xl font-bold text-white mb-4">--</h2>
-                        
                         <div class="mb-5 bg-zinc-900/40 p-4 squircle-lg border border-white/5 flex flex-col gap-2.5">
                             <label class="text-[10px] text-zinc-400 block font-bold uppercase tracking-wider">الكمية أو عدد العبوات المتناولة:</label>
                             <div class="flex items-center justify-between bg-black/40 p-1.5 squircle-md border border-white/5 max-w-[240px] mx-auto w-full">
@@ -165,7 +155,6 @@
                                 <button onclick="adjustMultiplierStep(0.25)" class="w-10 h-10 bg-zinc-900 rounded-xl text-green-500 font-bold text-lg active:scale-90">+</button>
                             </div>
                         </div>
-
                         <div class="flex flex-col border-t border-white/5 mb-6">
                             <div class="flex justify-between items-center py-4 border-b border-white/5 text-xs">
                                 <span id="detWeight" class="text-white font-bold">--</span>
@@ -188,37 +177,112 @@
             </div>
         </div>
 
-        <div id="adminFeedbacksModal" class="fixed inset-0 z-50 bg-[#050505] hidden flex-col overflow-y-auto no-scrollbar"><div class="w-full max-w-md mx-auto flex flex-col relative min-h-screen p-4 pb-12 text-right"><div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3 mt-2"><button onclick="closeModal('adminFeedbacksModal')" class="w-8 h-8 flex items-center justify-center bg-zinc-900 border border-white/10 squircle-md text-zinc-400 hover:text-white text-xs font-bold">✕</button><h2 class="text-sm font-bold text-white">📋 صندوق المقترحات</h2></div><div id="feedbacksItemsContainer" class="flex flex-col gap-3"></div></div></div>
-        <div id="editModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-end justify-center p-4"><div class="w-full max-w-md bg-[#0d0d0d] rounded-t-[2rem] border border-white/10 p-6 modal-animate max-h-[85vh] overflow-y-auto no-scrollbar shadow-2xl"><div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3"><button onclick="closeModal('editModal')" class="text-zinc-500 hover:text-white text-lg font-bold">✕</button><h2 class="text-sm font-bold text-white">تعديل البيانات</h2></div><div class="flex flex-col gap-4 text-right"><input type="hidden" id="editId" value=""><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الاسم</label><input type="text" id="editName" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الفئة</label><select id="editCategory" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white font-bold"><option value="chips">شبسات</option><option value="chocolate">شكولاتات</option><option value="biscuits">بسكويتات</option><option value="icecream">آيسكريم</option><option value="cake">كيك</option><option value="sweets">حلويات</option><option value="maamoul">معمول</option><option value="restaurants">مطاعم</option></select></div><div class="grid grid-cols-2 gap-3"><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الوزن</label><input type="text" id="editWeight" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الكارب</label><input type="number" step="0.1" id="editCarbs" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div></div><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">السعرات</label><input type="number" id="editCal" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">رابط الصورة</label><input type="text" id="editImg" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div><div class="flex gap-2 mt-4 border-t border-white/5 pt-4"><button onclick="closeModal('editModal')" class="flex-1 py-3 bg-zinc-900 text-zinc-400 rounded-xl font-bold">إلغاء</button><button onclick="saveProductEdits()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold">💾 حفظ</button></div></div></div></div>
-        <div id="addModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-end justify-center p-4"><div class="w-full max-w-md bg-[#0d0d0d] rounded-t-[2rem] border border-white/10 p-6 modal-animate max-h-[85vh] overflow-y-auto no-scrollbar shadow-2xl"><div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3"><button onclick="closeModal('addModal')" class="text-zinc-500 hover:text-white text-lg font-bold">✕</button><h2 class="text-sm font-bold text-white">إضافة منتج</h2></div><div class="flex flex-col gap-4 text-right"><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الاسم</label><input type="text" id="newName" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الفئة</label><select id="newCategory" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white font-bold"><option value="chips">شبسات</option><option value="chocolate">شكولاتات</option><option value="biscuits">بسكويتات</option><option value="icecream">آيسكريم</option><option value="cake">كيك</option><option value="sweets">حلويات</option><option value="maamoul">معمول</option><option value="restaurants">مطاعم</option></select></div><div class="grid grid-cols-2 gap-3"><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الوزن</label><input type="text" id="newWeight" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الكارب</label><input type="number" step="0.1" id="newCarbs" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div></div><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">السعرات</label><input type="number" id="newCal" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div><div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">رابط الصورة</label><input type="text" id="newImg" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div><div class="flex gap-3 mt-4 border-t border-white/5 pt-4"><button onclick="closeModal('addModal')" class="flex-1 py-3 bg-zinc-800 text-white rounded-xl font-bold">إلغاء</button><button onclick="addNewSnack()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold">إضافة</button></div></div></div></div>
-        <div id="feedbackModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4"><div class="w-full max-w-md bg-[#0d0d0d] rounded-2xl border border-white/10 p-6 shadow-2xl text-right"><div class="flex justify-between items-center mb-4 border-b border-white/5 pb-2"><button onclick="closeModal('feedbackModal')" class="text-zinc-500 hover:text-white text-base font-bold">✕</button><h2 class="text-sm font-bold text-white">📣 الشكاوى والمقترحات</h2></div><textarea id="feedbackText" placeholder="اكتب هنا تفاصيل شكواك..." class="w-full h-32 p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white resize-none mb-4 placeholder-zinc-600"></textarea><div class="flex gap-2"><button onclick="closeModal('feedbackModal')" class="flex-1 py-3 bg-zinc-800 text-zinc-400 rounded-xl font-bold">إلغاء</button><button onclick="sendFeedbackToFirebase()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold active:scale-95 transition-transform">🚀 إرسال</button></div></div></div>
+        <div id="adminFeedbacksModal" class="fixed inset-0 z-50 bg-[#050505] hidden flex-col overflow-y-auto no-scrollbar">
+            <div class="w-full max-w-md mx-auto flex flex-col relative min-h-screen p-4 pb-12 text-right">
+                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3 mt-2">
+                    <button onclick="closeModal('adminFeedbacksModal')" class="w-8 h-8 flex items-center justify-center bg-zinc-900 border border-white/10 squircle-md text-zinc-400 hover:text-white text-xs font-bold">✕</button>
+                    <h2 class="text-sm font-bold text-white">📋 صندوق المقترحات</h2>
+                </div>
+                <div id="feedbacksItemsContainer" class="flex flex-col gap-3"></div>
+            </div>
+        </div>
+
+        <div id="editModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-end justify-center p-4">
+            <div class="w-full max-w-md bg-[#0d0d0d] rounded-t-[2rem] border border-white/10 p-6 modal-animate max-h-[85vh] overflow-y-auto no-scrollbar shadow-2xl">
+                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3">
+                    <button onclick="closeModal('editModal')" class="text-zinc-500 hover:text-white text-lg font-bold">✕</button>
+                    <h2 class="text-sm font-bold text-white">تعديل البيانات</h2>
+                </div>
+                <div class="flex flex-col gap-4 text-right">
+                    <input type="hidden" id="editId" value="">
+                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الاسم</label><input type="text" id="editName" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الفئة</label>
+                        <select id="editCategory" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white font-bold">
+                            <option value="chips">شبسات</option><option value="chocolate">شكولاتات</option><option value="biscuits">بسكويتات</option><option value="icecream">آيسكريم</option><option value="cake">كيك</option><option value="sweets">حلويات</option><option value="maamoul">معمول</option><option value="restaurants">مطاعم</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الوزن</label><input type="text" id="editWeight" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                        <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الكارب</label><input type="number" step="0.1" id="editCarbs" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                    </div>
+                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">السعرات</label><input type="number" id="editCal" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">رابط الصورة</label><input type="text" id="editImg" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                    <div class="flex gap-2 mt-4 border-t border-white/5 pt-4">
+                        <button onclick="closeModal('editModal')" class="flex-1 py-3 bg-zinc-900 text-zinc-400 rounded-xl font-bold">إلغاء</button>
+                        <button onclick="saveProductEdits()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold">💾 حفظ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="addModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-end justify-center p-4">
+            <div class="w-full max-w-md bg-[#0d0d0d] rounded-t-[2rem] border border-white/10 p-6 modal-animate max-h-[85vh] overflow-y-auto no-scrollbar shadow-2xl">
+                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3">
+                    <button onclick="closeModal('addModal')" class="text-zinc-500 hover:text-white text-lg font-bold">✕</button>
+                    <h2 class="text-sm font-bold text-white">إضافة منتج</h2>
+                </div>
+                <div class="flex flex-col gap-4 text-right">
+                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الاسم</label><input type="text" id="newName" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الفئة</label>
+                        <select id="newCategory" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white font-bold">
+                            <option value="chips">شبسات</option><option value="chocolate">شكولاتات</option><option value="biscuits">بسكويتات</option><option value="icecream">آيسكريم</option><option value="cake">كيك</option><option value="sweets">حلويات</option><option value="maamoul">معمول</option><option value="restaurants">مطاعم</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الوزن</label><input type="text" id="newWeight" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                        <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الكارب</label><input type="number" step="0.1" id="newCarbs" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                    </div>
+                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">السعرات</label><input type="number" id="newCal" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">رابط الصورة</label><input type="text" id="newImg" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                    <div class="flex gap-3 mt-4 border-t border-white/5 pt-4">
+                        <button onclick="closeModal('addModal')" class="flex-1 py-3 bg-zinc-800 text-white rounded-xl font-bold">إلغاء</button>
+                        <button onclick="addNewSnack()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold">إضافة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="feedbackModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4">
+            <div class="w-full max-w-md bg-[#0d0d0d] rounded-2xl border border-white/10 p-6 shadow-2xl text-right">
+                <div class="flex justify-between items-center mb-4 border-b border-white/5 pb-2">
+                    <button onclick="closeModal('feedbackModal')" class="text-zinc-500 hover:text-white text-base font-bold">✕</button>
+                    <h2 class="text-sm font-bold text-white">📣 الشكاوى والمقترحات</h2>
+                </div>
+                <textarea id="feedbackText" placeholder="اكتب هنا تفاصيل شكواك..." class="w-full h-32 p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white resize-none mb-4 placeholder-zinc-600"></textarea>
+                <div class="flex gap-2">
+                    <button onclick="closeModal('feedbackModal')" class="flex-1 py-3 bg-zinc-800 text-zinc-400 rounded-xl font-bold">إلغاء</button>
+                    <button onclick="sendFeedbackToFirebase()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold active:scale-95 transition-transform">🚀 إرسال</button>
+                </div>
+            </div>
+        </div>
 
         <footer id="mainFooter" class="fixed bottom-0 inset-x-0 z-30">
             <div class="max-w-md mx-auto p-4">
                 <div class="glass squircle-xl p-5 flex justify-between items-center text-white shadow-[0_25px_60px_rgba(0,0,0,0.95)] relative border border-white/10">
                     <div class="text-right flex flex-col">
                         <p class="text-[9px] text-zinc-400 font-bold mb-1 uppercase tracking-widest flex items-center gap-2">
-                            إجمالي الكارب <button onclick="clearAllSelectedItems()" title="تصفير الحسبة" class="w-5 h-5 bg-zinc-900/80 border border-white/5 text-red-400 rounded flex items-center justify-center text-[10px] active:scale-90 transition-transform">🧹</button>
+                            إجمالي الكارب
+                            <button onclick="clearAllSelectedItems()" title="تصفير الحسبة" class="w-5 h-5 bg-zinc-900/80 border border-white/5 text-red-400 rounded flex items-center justify-center text-[10px] active:scale-90 transition-transform">🧹</button>
                         </p>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300" id="totalCarbs">0.0</span> <span class="text-[9px] text-zinc-500 font-bold">G</span>
+                            <span class="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300" id="totalCarbs">0.0</span>
+                            <span class="text-[9px] text-zinc-500 font-bold">G</span>
                         </div>
                     </div>
                     <div class="h-10 w-[1px] bg-white/10 mx-2"></div>
                     <div class="text-center flex flex-col items-center">
                         <p class="text-[9px] text-green-400 font-bold mb-1 uppercase tracking-widest">الجرعة المقترحة</p>
                         <div class="flex items-center justify-center gap-1">
-                            <span class="text-4xl font-bold text-green-400 tracking-tight drop-shadow-[0_0_10px_rgba(34,197,94,0.15)]" id="insulinDose">0.0</span> <span class="text-[9px] text-green-700 font-bold mt-2.5">Unit</span>
+                            <span class="text-4xl font-bold text-green-400 tracking-tight drop-shadow-[0_0_10px_rgba(34,197,94,0.15)]" id="insulinDose">0.0</span>
+                            <span class="text-[9px] text-green-700 font-bold mt-2.5">Unit</span>
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
-
     </div>
 
     <script>
-        let headerClickCount = 0; let headerClickTimeout;
         const firebaseConfig = {
             apiKey: "AIzaSyCdR40SHI2_SKHuhmAue3hoH-2CVU_JKpg",
             authDomain: "carb-sa.firebaseapp.com",
@@ -230,24 +294,58 @@
             measurementId: "G-D7Y72MME5D"
         };
         if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
-        const db = firebase.database(); const analytics = firebase.analytics();
+        const db = firebase.database();
+        const analytics = firebase.analytics();
 
         let snacks = [];
         let ratio = parseInt(localStorage.getItem('dosage_pro_ratio')) || 10;
         let currentCategory = 'all';
         let selectedItemsMap = JSON.parse(localStorage.getItem('dosage_pro_selected_map')) || {};
-        let activeDetailsId = null; let activeMultiplier = 1;
+        let activeDetailsId = null;
+        let activeMultiplier = 1;
         let activeAppSection = null;
 
         const categoryTranslations = { all: 'الكل', chips: 'شبسات', chocolate: 'شكولاتات', biscuits: 'بسكويتات', icecream: 'آيسكريم', cake: 'كيك', sweets: 'حلويات', maamoul: 'معمول', restaurants: 'مطاعم' };
 
+        // ── Admin via URL key ──
+        function getUrlKey() {
+            return new URLSearchParams(window.location.search).get('key') || '';
+        }
+
+        function getSavedAdminKey() {
+            return sessionStorage.getItem("admin_session_token") || "";
+        }
+
+        function isAdmin() {
+            return getSavedAdminKey().length > 0;
+        }
+
+        // Check URL for admin key on load
+        (function checkAdminKey() {
+            const urlKey = getUrlKey();
+            if (!urlKey) return;
+            // Verify key against Firebase
+            db.ref('admin_secret_key').once('value', snapshot => {
+                const storedKey = snapshot.val();
+                if (storedKey && urlKey === storedKey) {
+                    sessionStorage.setItem("admin_session_token", urlKey);
+                    // Clean URL without reloading
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                    injectAdminUI();
+                }
+            });
+        })();
+
+        // Restore admin UI if session still valid
+        if (isAdmin()) { injectAdminUI(); }
+
+        // ── Scroll hide/show ──
         let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
             if (activeAppSection === null) return;
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const header = document.getElementById('appHeader');
             const footer = document.getElementById('mainFooter');
-            
             if (scrollTop > lastScrollTop && scrollTop > 80) {
                 header.classList.add('header-hidden');
                 footer.classList.add('footer-hidden');
@@ -258,15 +356,12 @@
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }, false);
 
-        if (localStorage.getItem("is_carb_app_admin") === "true") {
-            injectAdminUI();
-        }
-
+        // ── Firebase load products ──
         db.ref('products').on('value', (snapshot) => {
             const data = snapshot.val();
             if (data) {
                 const updatedSnacks = [];
-                Object.keys(data).forEach(id => { 
+                Object.keys(data).forEach(id => {
                     if (data[id]) {
                         let item = data[id];
                         let itemType = (item.type || 'chips').toLowerCase().trim();
@@ -277,11 +372,11 @@
                         if (itemType === 'كيك') itemType = 'cake';
                         if (itemType === 'حلويات' || itemType === 'حلى') itemType = 'sweets';
                         if (itemType === 'معمول') itemType = 'maamoul';
-                        updatedSnacks.push({ ...item, type: itemType, id: parseInt(id) }); 
+                        updatedSnacks.push({ ...item, type: itemType, id: parseInt(id) });
                     }
                 });
                 snacks = updatedSnacks;
-                if(activeAppSection !== null) { render(); }
+                if (activeAppSection !== null) { render(); }
                 updateStats();
             }
         });
@@ -291,19 +386,13 @@
             document.getElementById('sectionWelcomeScreen').style.display = 'none';
             document.getElementById('appMainContent').style.display = 'block';
             document.getElementById('appMainContent').classList.remove('hidden');
-            
             if (section === 'restaurants') {
                 currentCategory = 'restaurants';
-                if(document.getElementById('categoryMenuContainer')) {
-                    document.getElementById('categoryMenuContainer').style.display = 'none';
-                }
+                document.getElementById('categoryMenuContainer').style.display = 'none';
             } else {
                 currentCategory = 'all';
-                if(document.getElementById('categoryMenuContainer')) {
-                    document.getElementById('categoryMenuContainer').style.display = 'block';
-                }
+                document.getElementById('categoryMenuContainer').style.display = 'block';
             }
-            
             document.getElementById('searchInput').value = '';
             buildCategoryDropdownMenu();
             render();
@@ -322,35 +411,6 @@
             analytics.logEvent('view_ratio_explanation');
         }
 
-        function getSavedAdminKey() { return sessionStorage.getItem("admin_session_token") || ""; }
-
-        function handleAdminSecretClick() {
-            if (localStorage.getItem("is_carb_app_admin") === "true") {
-                if (confirm("هل ترغب في تسجيل الخروج وقفل صلاحيات الإدارة والتعديل؟")) {
-                    localStorage.removeItem("is_carb_app_admin");
-                    sessionStorage.removeItem("admin_session_token");
-                    location.reload();
-                }
-                return;
-            }
-            headerClickCount++; clearTimeout(headerClickTimeout);
-            if (headerClickCount >= 5) {
-                headerClickCount = 0; const pass = prompt("أدخل رمز التحقق للمسؤول:");
-                if (pass && pass.trim().length > 0) {
-                    fetch(`https://carb-sa-default-rtdb.firebaseio.com/admin_auth_key.json?auth=${pass}`)
-                    .then(res => {
-                        if (res.status === 200) {
-                            localStorage.setItem("is_carb_app_admin", "true");
-                            sessionStorage.setItem("admin_session_token", pass);
-                            injectAdminUI();
-                            analytics.logEvent('admin_login_success');
-                            alert("تم تفعيل صلاحيات الإدارة بنجاح ✅");
-                        } else { alert("الرمز غير صحيح أو غير مصرح لك ❌"); }
-                    }).catch(() => alert("الرمز غير صحيح أو فشل الاتصال بالسيرفر ❌"));
-                }
-            } else { headerClickTimeout = setTimeout(() => { headerClickCount = 0; }, 1500); }
-        }
-
         function injectAdminUI() {
             document.getElementById('adminBackupZone').innerHTML = `<button onclick="exportCurrentCodeToHTML()" title="نسخة احتياطية" class="w-9 h-9 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-sm active:scale-95 transition-transform ml-1">💾</button>`;
             document.getElementById('adminAddZone').innerHTML = `<button id="addGlobalBtn" onclick="openAddModal()" class="w-9 h-9 bg-green-500 text-black squircle-md flex items-center justify-center font-bold text-xl active:scale-95 transition-transform">+</button>`;
@@ -358,55 +418,52 @@
             listenToFeedbacksLive();
         }
 
-        function changeRatio(val) { 
-            ratio = Math.max(1, ratio + val); document.getElementById('ratioValue').innerText = ratio; 
-            localStorage.setItem('dosage_pro_ratio', ratio.toString()); updateStats(); 
+        function changeRatio(val) {
+            ratio = Math.max(1, ratio + val);
+            document.getElementById('ratioValue').innerText = ratio;
+            localStorage.setItem('dosage_pro_ratio', ratio.toString());
+            updateStats();
         }
 
         function buildCategoryDropdownMenu() {
-            const container = document.getElementById('dynamicCategoriesContainer'); if(!container) return;
+            const container = document.getElementById('dynamicCategoriesContainer'); if (!container) return;
             const baseTypes = ['chips', 'chocolate', 'biscuits', 'icecream', 'cake', 'sweets', 'maamoul'];
-            let dropdownHtml = '';
-            baseTypes.forEach(type => {
-                const label = categoryTranslations[type] || type; const isAct = currentCategory === type ? 'active-category' : '';
-                dropdownHtml += `<button onclick="selectCategory('${type}', '${label}')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg ${isAct}" id="opt-${type}">${label}</button>`;
-            });
-            container.innerHTML = dropdownHtml;
+            container.innerHTML = baseTypes.map(type => {
+                const label = categoryTranslations[type] || type;
+                const isAct = currentCategory === type ? 'active-category' : '';
+                return `<button onclick="selectCategory('${type}', '${label}')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg ${isAct}" id="opt-${type}">${label}</button>`;
+            }).join('');
         }
 
         function toggleCategoryDropdown() { document.getElementById('categoryDropdown').classList.toggle('hidden'); }
+
         function selectCategory(type, label) {
-            currentCategory = type; document.getElementById('currentCategoryLabel').innerText = label;
+            currentCategory = type;
+            document.getElementById('currentCategoryLabel').innerText = label;
             document.getElementById('categoryDropdown').classList.add('hidden');
             document.querySelectorAll('#categoryDropdown button').forEach(b => b.classList.remove('active-category'));
-            const activeBtn = document.getElementById('opt-' + type); if (activeBtn) activeBtn.classList.add('active-category');
+            const activeBtn = document.getElementById('opt-' + type);
+            if (activeBtn) activeBtn.classList.add('active-category');
             render();
         }
 
         function render() {
-            const list = document.getElementById('snackList'); if(!list) return;
+            const list = document.getElementById('snackList'); if (!list) return;
             const term = document.getElementById('searchInput').value.toLowerCase().trim();
-            
             const filtered = snacks.filter(s => {
                 const matchesSearch = s.name.toLowerCase().includes(term);
-                if (activeAppSection === 'restaurants') {
-                    return s.type === 'restaurants' && matchesSearch;
-                } else {
-                    if (s.type === 'restaurants') return false; 
-                    return (currentCategory === 'all' || s.type === currentCategory) && matchesSearch;
-                }
+                if (activeAppSection === 'restaurants') return s.type === 'restaurants' && matchesSearch;
+                if (s.type === 'restaurants') return false;
+                return (currentCategory === 'all' || s.type === currentCategory) && matchesSearch;
             });
-
-            if (filtered.length === 0) { 
-                list.innerHTML = `<div class="text-center text-zinc-600 text-xs py-10">لا يوجد نتائج تطابق بحثك</div>`; 
-                return; 
+            if (filtered.length === 0) {
+                list.innerHTML = `<div class="text-center text-zinc-600 text-xs py-10">لا يوجد نتائج تطابق بحثك</div>`;
+                return;
             }
-
-            let htmlContent = '';
-            filtered.forEach(snack => {
-                const isSelected = snack.id in selectedItemsMap; 
+            list.innerHTML = filtered.map(snack => {
+                const isSelected = snack.id in selectedItemsMap;
                 const qtyText = isSelected && selectedItemsMap[snack.id] !== 1 ? ` (×${selectedItemsMap[snack.id]})` : '';
-                htmlContent += `
+                return `
                     <div onclick="openDetailsModal(${snack.id})" class="snack-card p-4 squircle-xl flex items-center justify-between gap-4 ${isSelected ? 'selected-card' : ''}">
                         <div class="flex items-center gap-3 flex-1 min-w-0 text-right">
                             <div class="w-12 h-12 bg-zinc-950/40 squircle-sm overflow-hidden flex-shrink-0 flex items-center justify-center p-1 border border-white/5">
@@ -418,36 +475,28 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-2 text-[10px] text-zinc-500 font-bold">${snack.cal || 0} 🔥</div>
-                    </div>
-                `;
-            });
-
-            list.innerHTML = htmlContent;
+                    </div>`;
+            }).join('');
         }
 
         function openDetailsModal(id) {
             const snack = snacks.find(s => s.id === id); if (!snack) return;
-            activeDetailsId = id; activeMultiplier = selectedItemsMap[id] || 1;
-            document.getElementById('detName').innerText = snack.name; document.getElementById('detWeight').innerText = snack.weight || '0g';
+            activeDetailsId = id;
+            activeMultiplier = selectedItemsMap[id] || 1;
+            document.getElementById('detName').innerText = snack.name;
+            document.getElementById('detWeight').innerText = snack.weight || '0g';
             document.getElementById('detImgView').src = snack.img || 'https://placehold.co/400x300/141414/666?text=No+Image';
-            
             document.getElementById('customMultiplierInput').value = activeMultiplier;
-
-            const actionsZone = document.getElementById('adminActionsZone');
-            if (localStorage.getItem("is_carb_app_admin") === "true") {
-                actionsZone.innerHTML = `
-                    <button onclick="triggerEditFromDetails()" class="w-full py-4 bg-zinc-900 border border-white/5 squircle-lg flex items-center justify-center gap-2 text-sm text-white font-bold active:scale-95 transition-all">✏️ تعديل بيانات المنتج</button>
-                    <button onclick="deleteProductFromFirebase()" class="w-full py-4 bg-red-950 border border-red-700/50 squircle-lg flex items-center justify-center gap-2 text-sm text-red-100 font-bold active:scale-95 transition-all">🗑️ حذف المنتج نهائياً</button>
-                `;
-            } else { actionsZone.innerHTML = ''; }
-
+            document.getElementById('adminActionsZone').innerHTML = isAdmin() ? `
+                <button onclick="triggerEditFromDetails()" class="w-full py-4 bg-zinc-900 border border-white/5 squircle-lg flex items-center justify-center gap-2 text-sm text-white font-bold active:scale-95 transition-all">✏️ تعديل بيانات المنتج</button>
+                <button onclick="deleteProductFromFirebase()" class="w-full py-4 bg-red-950 border border-red-700/50 squircle-lg flex items-center justify-center gap-2 text-sm text-red-100 font-bold active:scale-95 transition-all">🗑️ حذف المنتج نهائياً</button>
+            ` : '';
             updateDetailsModalValues(snack);
             document.getElementById('detailsModal').style.display = 'flex';
         }
 
         function adjustMultiplierStep(step) {
-            activeMultiplier = Math.max(0.01, (parseFloat(activeMultiplier) || 0) + step);
-            activeMultiplier = Math.round(activeMultiplier * 100) / 100;
+            activeMultiplier = Math.max(0.01, Math.round(((parseFloat(activeMultiplier) || 0) + step) * 100) / 100);
             document.getElementById('customMultiplierInput').value = activeMultiplier;
             const snack = snacks.find(s => s.id === activeDetailsId);
             if (snack) updateDetailsModalValues(snack);
@@ -462,126 +511,296 @@
         }
 
         function updateDetailsModalValues(snack) {
-            const calculatedCarbs = snack.carbs * activeMultiplier; document.getElementById('detCarbs').innerText = calculatedCarbs.toFixed(1);
+            const calculatedCarbs = snack.carbs * activeMultiplier;
+            document.getElementById('detCarbs').innerText = calculatedCarbs.toFixed(1);
             const calcLabel = document.getElementById('detCarbsCalc');
-            if (activeMultiplier !== 1) { calcLabel.innerText = `(${snack.carbs}G × ${activeMultiplier})`; calcLabel.classList.remove('hidden'); } 
-            else { calcLabel.classList.add('hidden'); }
+            if (activeMultiplier !== 1) {
+                calcLabel.innerText = `(${snack.carbs}G × ${activeMultiplier})`;
+                calcLabel.classList.remove('hidden');
+            } else { calcLabel.classList.add('hidden'); }
             const btn = document.getElementById('detAddBtn');
-            if (activeDetailsId in selectedItemsMap) { btn.className = "w-full py-4 bg-red-950/80 border border-red-700/40 text-red-200 squircle-lg font-bold active:scale-95 transition-all"; btn.innerHTML = `🗑️ إزالة المنتج من الحسبة`; } 
-            else { btn.className = "w-full py-4 bg-green-500 border border-green-600 text-black squircle-lg font-bold text-sm active:scale-95 transition-all shadow-lg shadow-green-500/10"; btn.innerHTML = `＋ إضافة المنتج للإجمالي اليومي`; }
+            if (activeDetailsId in selectedItemsMap) {
+                btn.className = "w-full py-4 bg-red-950/80 border border-red-700/40 text-red-200 squircle-lg font-bold active:scale-95 transition-all";
+                btn.innerHTML = `🗑️ إزالة المنتج من الحسبة`;
+            } else {
+                btn.className = "w-full py-4 bg-green-500 border border-green-600 text-black squircle-lg font-bold text-sm active:scale-95 transition-all shadow-lg shadow-green-500/10";
+                btn.innerHTML = `＋ إضافة المنتج للإجمالي اليومي`;
+            }
         }
 
         function toggleSelectFromDetails() {
             if (!activeDetailsId) return;
-            if (activeDetailsId in selectedItemsMap) { delete selectedItemsMap[activeDetailsId]; activeMultiplier = 1; } 
+            if (activeDetailsId in selectedItemsMap) { delete selectedItemsMap[activeDetailsId]; activeMultiplier = 1; }
             else { selectedItemsMap[activeDetailsId] = activeMultiplier; }
             localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
             closeModal('detailsModal'); updateStats(); render();
         }
 
         function updateStats() {
-            let total = 0; Object.keys(selectedItemsMap).forEach(id => { const snack = snacks.find(s => s.id === parseInt(id)); if (snack) { total += (snack.carbs * selectedItemsMap[id]); } });
-            const displayCarbs = Math.round(total * 10) / 10; document.getElementById('totalCarbs').innerText = displayCarbs.toFixed(1);
-            const dose = displayCarbs / ratio; document.getElementById('insulinDose').innerText = dose === 0 ? "0.0" : dose.toFixed(1);
+            let total = 0;
+            Object.keys(selectedItemsMap).forEach(id => {
+                const snack = snacks.find(s => s.id === parseInt(id));
+                if (snack) total += snack.carbs * selectedItemsMap[id];
+            });
+            const displayCarbs = Math.round(total * 10) / 10;
+            document.getElementById('totalCarbs').innerText = displayCarbs.toFixed(1);
+            const dose = displayCarbs / ratio;
+            document.getElementById('insulinDose').innerText = dose === 0 ? "0.0" : dose.toFixed(1);
         }
 
         function clearAllSelectedItems() {
             if (Object.keys(selectedItemsMap).length === 0) return;
             if (confirm("هل تريد مسح جميع المنتجات المحددة وتصفير الحسبة?")) {
-                selectedItemsMap = {}; localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
+                selectedItemsMap = {};
+                localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
                 updateStats(); render();
             }
         }
 
         function triggerEditFromDetails() {
-            if (localStorage.getItem("is_carb_app_admin") !== "true" || !activeDetailsId) return; const snack = snacks.find(s => s.id === activeDetailsId); if (!snack) return;
-            document.getElementById('editId').value = snack.id; document.getElementById('editName').value = snack.name;
-            document.getElementById('editCategory').value = snack.type || 'chips'; document.getElementById('editWeight').value = snack.weight || '';
-            document.getElementById('editCarbs').value = snack.carbs; document.getElementById('editCal').value = snack.cal;
-            document.getElementById('editImg').value = snack.img || ''; closeModal('detailsModal'); document.getElementById('editModal').style.display = 'flex';
+            if (!isAdmin() || !activeDetailsId) return;
+            const snack = snacks.find(s => s.id === activeDetailsId); if (!snack) return;
+            document.getElementById('editId').value = snack.id;
+            document.getElementById('editName').value = snack.name;
+            document.getElementById('editCategory').value = snack.type || 'chips';
+            document.getElementById('editWeight').value = snack.weight || '';
+            document.getElementById('editCarbs').value = snack.carbs;
+            document.getElementById('editCal').value = snack.cal;
+            document.getElementById('editImg').value = snack.img || '';
+            closeModal('detailsModal');
+            document.getElementById('editModal').style.display = 'flex';
         }
 
         function deleteProductFromFirebase() {
-            if (localStorage.getItem("is_carb_app_admin") !== "true" || !activeDetailsId) return;
+            if (!isAdmin() || !activeDetailsId) return;
             if (confirm("حذف نهائي للمنتج؟")) {
-                const idToDelete = activeDetailsId; closeModal('detailsModal');
-                const token = getSavedAdminKey();
-                const url = `https://carb-sa-default-rtdb.firebaseio.com/products/${idToDelete}.json?auth=${token}`;
-                fetch(url, { method: 'DELETE' })
+                const idToDelete = activeDetailsId;
+                closeModal('detailsModal');
+                fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${idToDelete}.json?auth=${getSavedAdminKey()}`, { method: 'DELETE' })
                 .then(res => {
                     if (!res.ok) throw new Error();
-                    delete selectedItemsMap[idToDelete]; 
-                    localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap)); 
+                    delete selectedItemsMap[idToDelete];
+                    localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
                     updateStats();
-                })
-                .catch(err => alert("فشلت العملية: تم رفض الصلاحيات."));
+                }).catch(() => alert("فشلت العملية: تم رفض الصلاحيات."));
             }
         }
 
-        function openAddModal() { if (localStorage.getItem("is_carb_app_admin") === "true") document.getElementById('addModal').style.display = 'flex'; }
+        function openAddModal() { if (isAdmin()) document.getElementById('addModal').style.display = 'flex'; }
         function openFeedbackModal() { document.getElementById('feedbackModal').style.display = 'flex'; }
-        function openAdminFeedbacksListModal() { if (localStorage.getItem("is_carb_app_admin") === "true") document.getElementById('adminFeedbacksModal').style.display = 'flex'; }
-        function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
+        function openAdminFeedbacksListModal() { if (isAdmin()) document.getElementById('adminFeedbacksModal').style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         function saveProductEdits() {
-            if (localStorage.getItem("is_carb_app_admin") !== "true") return; const id = parseInt(document.getElementById('editId').value);
-            const name = document.getElementById('editName').value.trim(); const type = document.getElementById('editCategory').value;
-            const weight = document.getElementById('editWeight').value.trim() || '0g'; const carbs = parseFloat(document.getElementById('editCarbs').value) || 0;
-            const cal = parseInt(document.getElementById('editCal').value) || 0; let img = document.getElementById('editImg').value.trim();
+            if (!isAdmin()) return;
+            const id = parseInt(document.getElementById('editId').value);
+            const name = document.getElementById('editName').value.trim();
+            const type = document.getElementById('editCategory').value;
+            const weight = document.getElementById('editWeight').value.trim() || '0g';
+            const carbs = parseFloat(document.getElementById('editCarbs').value) || 0;
+            const cal = parseInt(document.getElementById('editCal').value) || 0;
+            const img = document.getElementById('editImg').value.trim();
             if (!name || carbs <= 0) { alert('تأكد من البيانات'); return; }
-            
-            const productData = { id, name, carbs, cal, weight, type, img };
-            const token = getSavedAdminKey();
-            const url = `https://carb-sa-default-rtdb.firebaseio.com/products/${id}.json?auth=${token}`;
-            
-            fetch(url, { method: 'PUT', body: JSON.stringify(productData) })
-            .then(res => {
-                if (!res.ok) throw new Error();
-                closeModal('editModal');
-            })
-            .catch(err => alert("فشلت العملية: الرمز غير صحيح."));
+            fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${id}.json?auth=${getSavedAdminKey()}`, {
+                method: 'PUT', body: JSON.stringify({ id, name, carbs, cal, weight, type, img })
+            }).then(res => { if (!res.ok) throw new Error(); closeModal('editModal'); })
+            .catch(() => alert("فشلت العملية: الرمز غير صحيح."));
         }
 
         function addNewSnack() {
-            if (localStorage.getItem("is_carb_app_admin") !== "true") return; const name = document.getElementById('newName').value.trim(); const type = document.getElementById('newCategory').value;
-            const weight = document.getElementById('newWeight').value.trim() || '0g'; const carbs = parseFloat(document.getElementById('newCarbs').value) || 0;
-            const cal = parseInt(document.getElementById('newCal').value) || 0; let img = document.getElementById('newImg').value.trim();
-            if (!name || carbs <= 0) { alert('تأكد من البيانات'); return; } const newId = Date.now();
-            
-            const productData = { id: newId, name, carbs, cal, weight, type, img };
-            const token = getSavedAdminKey();
-            const url = `https://carb-sa-default-rtdb.firebaseio.com/products/${newId}.json?auth=${token}`;
-            
-            fetch(url, { method: 'PUT', body: JSON.stringify(productData) })
-            .then(res => {
+            if (!isAdmin()) return;
+            const name = document.getElementById('newName').value.trim();
+            const type = document.getElementById('newCategory').value;
+            const weight = document.getElementById('newWeight').value.trim() || '0g';
+            const carbs = parseFloat(document.getElementById('newCarbs').value) || 0;
+            const cal = parseInt(document.getElementById('newCal').value) || 0;
+            const img = document.getElementById('newImg').value.trim();
+            if (!name || carbs <= 0) { alert('تأكد من البيانات'); return; }
+            const newId = Date.now();
+            fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${newId}.json?auth=${getSavedAdminKey()}`, {
+                method: 'PUT', body: JSON.stringify({ id: newId, name, carbs, cal, weight, type, img })
+            }).then(res => {
                 if (!res.ok) throw new Error();
-                document.getElementById('newName').value = ''; document.getElementById('newWeight').value = ''; 
-                document.getElementById('newCarbs').value = ''; document.getElementById('newCal').value = ''; 
-                document.getElementById('newImg').value = ''; closeModal('addModal');
-            })
-            .catch(err => alert("فشلت العملية تم رفض الطلب."));
+                ['newName','newWeight','newCarbs','newCal','newImg'].forEach(id => document.getElementById(id).value = '');
+                closeModal('addModal');
+            }).catch(() => alert("فشلت العملية: تم رفض الطلب."));
         }
 
         function sendFeedbackToFirebase() {
-            const text = document.getElementById('feedbackText').value.trim(); if(!text) return;
-            const timestamp = new Date().toLocaleString('ar-SA'); const feedbackId = Date.now();
-            db.ref('feedbacks/' + feedbackId).set({ id: feedbackId, message: text, time: timestamp }).then(() => { alert('تم الإرسال بنجاح ❤️'); document.getElementById('feedbackText').value = ''; closeModal('feedbackModal'); });
+            const text = document.getElementById('feedbackText').value.trim(); if (!text) return;
+            const feedbackId = Date.now();
+            db.ref('feedbacks/' + feedbackId).set({ id: feedbackId, message: text, time: new Date().toLocaleString('ar-SA') })
+            .then(() => { alert('تم الإرسال بنجاح ❤️'); document.getElementById('feedbackText').value = ''; closeModal('feedbackModal'); });
         }
 
         function listenToFeedbacksLive() {
-            if (localStorage.getItem("is_carb_app_admin") !== "true") return; const container = document.getElementById('feedbacksItemsContainer'); if(!container) return;
+            if (!isAdmin()) return;
+            const container = document.getElementById('feedbacksItemsContainer'); if (!container) return;
             db.ref('feedbacks').on('value', (snapshot) => {
-                const data = snapshot.val(); if (!data) { container.innerHTML = `<div class="text-center text-zinc-600 text-xs py-10">لا توجد شكاوى 🌟</div>`; return; }
-                let html = ''; const sortedKeys = Object.keys(data).sort((a, b) => b - a);
-                sortedKeys.forEach(id => { if (data[id]) { html += `<div class="bg-zinc-900/80 p-4 rounded-xl border border-white/5 flex flex-col gap-2 text-right"><div class="flex justify-between items-center text-[10px] text-zinc-500"><span>🕒 ${data[id].time}</span></div><p class="text-xs text-white">${data[id].message}</p></div>`; } });
-                container.innerHTML = html;
+                const data = snapshot.val();
+                if (!data) { container.innerHTML = `<div class="text-center text-zinc-600 text-xs py-10">لا توجد شكاوى 🌟</div>`; return; }
+                container.innerHTML = Object.keys(data).sort((a, b) => b - a).filter(id => data[id]).map(id =>
+                    `<div class="bg-zinc-900/80 p-4 rounded-xl border border-white/5 flex flex-col gap-2 text-right">
+                        <div class="text-[10px] text-zinc-500">🕒 ${data[id].time}</div>
+                        <p class="text-xs text-white">${data[id].message}</p>
+                    </div>`
+                ).join('');
             });
         }
 
-        function exportCurrentCodeToHTML() { if (localStorage.getItem("is_carb_app_admin") !== "true") return; let currentHTML = document.documentElement.outerHTML; const blob = new Blob(["<!DOCTYPE html>\n" + currentHTML], { type: "text/html" }); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "index.html"; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
+        function exportCurrentCodeToHTML() {
+            if (!isAdmin()) return;
+            const blob = new Blob(["<!DOCTYPE html>\n" + document.documentElement.outerHTML], { type: "text/html" });
+            const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "index.html";
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        }
 
         document.getElementById('ratioValue').innerText = ratio;
-        window.addEventListener('click', function(e){ const btn = document.getElementById('categoryMenuBtn'); const dropdown = document.getElementById('categoryDropdown'); if (btn && !btn.contains(e.target) && dropdown && !dropdown.contains(e.target)){ dropdown.classList.add('hidden'); } });
+        window.addEventListener('click', function(e) {
+            const btn = document.getElementById('categoryMenuBtn');
+            const dropdown = document.getElementById('categoryDropdown');
+            if (btn && !btn.contains(e.target) && dropdown && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
     </script>
+
+    <!-- AI Section Modal -->
+    <div id="aiModal" class="fixed inset-0 z-[500] bg-[#050505] hidden flex-col">
+        <div class="max-w-md mx-auto w-full flex flex-col h-full">
+            <div class="flex items-center justify-between p-4 border-b border-white/5 bg-black/90 backdrop-blur-xl">
+                <button onclick="closeAISection()" class="w-8 h-8 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-xs active:scale-95 text-zinc-400 font-bold">↩</button>
+                <div class="text-center">
+                    <h1 class="text-sm font-bold text-white">🤖 احسب كاربك</h1>
+                    <p class="text-[9px] text-zinc-500">مدعوم بـ Gemini AI</p>
+                </div>
+                <button onclick="clearAIChat()" class="w-8 h-8 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-xs active:scale-95 text-red-400">🧹</button>
+            </div>
+            <div id="aiChatMessages" class="flex-1 overflow-y-auto no-scrollbar p-4 flex flex-col gap-3 pb-6">
+                <div class="flex justify-start">
+                    <div class="bg-zinc-900 border border-white/5 squircle-lg p-3 max-w-[85%] text-xs text-zinc-300 leading-relaxed">
+                        مرحبا! 👋 أرسل لي صورة أكل أو اكتب اسمه وأحسب لك الكارب فوراً 🍽️
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t border-white/5 bg-black/90 backdrop-blur-xl">
+                <div id="aiImagePreview" class="hidden mb-3 relative">
+                    <img id="aiPreviewImg" class="w-20 h-20 object-cover squircle-md border border-white/10">
+                    <button onclick="removeAIImage()" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-white text-[10px] flex items-center justify-center">✕</button>
+                </div>
+                <div class="flex gap-2 items-end">
+                    <label for="aiImageInput" class="w-10 h-10 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-base cursor-pointer active:scale-95 flex-shrink-0">📷</label>
+                    <input type="file" id="aiImageInput" accept="image/*" class="hidden" onchange="handleAIImageSelect(this)">
+                    <textarea id="aiTextInput" placeholder="اكتب اسم الأكل أو الوجبة..." rows="1" class="flex-1 p-2.5 squircle-md bg-zinc-900 text-right outline-none border border-white/5 text-xs text-white resize-none placeholder-zinc-500" oninput="this.style.height=\'auto\';this.style.height=this.scrollHeight+\'px\'" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendAIMessage();}"></textarea>
+                    <button onclick="sendAIMessage()" id="aiSendBtn" class="w-10 h-10 bg-green-500 squircle-md flex items-center justify-center text-black font-bold text-base active:scale-95 flex-shrink-0">↑</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const GEMINI_KEY = "AIzaSyDJMK3WNbV90zZIak_QF5b9qokEPnqjWWA";
+        let aiSelectedImage = null;
+
+        function openAISection() { document.getElementById("aiModal").style.display = "flex"; }
+        function closeAISection() { document.getElementById("aiModal").style.display = "none"; }
+
+        function clearAIChat() {
+            aiSelectedImage = null;
+            document.getElementById("aiImagePreview").classList.add("hidden");
+            document.getElementById("aiTextInput").value = "";
+            document.getElementById("aiChatMessages").innerHTML = `
+                <div class="flex justify-start">
+                    <div class="bg-zinc-900 border border-white/5 squircle-lg p-3 max-w-[85%] text-xs text-zinc-300 leading-relaxed">
+                        مرحبا! 👋 أرسل لي صورة أكل أو اكتب اسمه وأحسب لك الكارب فوراً 🍽️
+                    </div>
+                </div>`;
+        }
+
+        function handleAIImageSelect(input) {
+            const file = input.files[0]; if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                aiSelectedImage = e.target.result;
+                document.getElementById("aiPreviewImg").src = aiSelectedImage;
+                document.getElementById("aiImagePreview").classList.remove("hidden");
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeAIImage() {
+            aiSelectedImage = null;
+            document.getElementById("aiImagePreview").classList.add("hidden");
+            document.getElementById("aiImageInput").value = "";
+        }
+
+        function appendAIMessage(text, isUser) {
+            const container = document.getElementById("aiChatMessages");
+            const div = document.createElement("div");
+            div.className = "flex " + (isUser ? "justify-end" : "justify-start");
+            div.innerHTML = `<div class="${isUser ? "bg-green-500/10 border border-green-500/20 text-white" : "bg-zinc-900 border border-white/5 text-zinc-300"} squircle-lg p-3 max-w-[85%] text-xs leading-relaxed whitespace-pre-wrap">${text}</div>`;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendAITyping() {
+            const container = document.getElementById("aiChatMessages");
+            const div = document.createElement("div");
+            div.id = "aiTypingIndicator"; div.className = "flex justify-start";
+            div.innerHTML = `<div class="bg-zinc-900 border border-white/5 squircle-lg p-3 text-zinc-500 text-xs">يفكر...</div>`;
+            container.appendChild(div); container.scrollTop = container.scrollHeight;
+        }
+
+        function removeAITyping() { const el = document.getElementById("aiTypingIndicator"); if (el) el.remove(); }
+
+        async function sendAIMessage() {
+            const text = document.getElementById("aiTextInput").value.trim();
+            if (!text && !aiSelectedImage) return;
+            const btn = document.getElementById("aiSendBtn");
+            btn.disabled = true; btn.classList.add("opacity-50");
+
+            if (aiSelectedImage) {
+                const container = document.getElementById("aiChatMessages");
+                const div = document.createElement("div");
+                div.className = "flex justify-end";
+                div.innerHTML = `<div class="bg-green-500/10 border border-green-500/20 squircle-lg p-2 max-w-[85%]"><img src="${aiSelectedImage}" class="w-32 h-32 object-cover squircle-md">${text ? `<p class="text-xs text-white mt-1">${text}</p>` : ""}</div>`;
+                container.appendChild(div); container.scrollTop = container.scrollHeight;
+            } else { appendAIMessage(text, true); }
+
+            document.getElementById("aiTextInput").value = "";
+            document.getElementById("aiTextInput").style.height = "auto";
+            removeAIImage();
+            appendAITyping();
+
+            try {
+                const parts = [];
+                if (aiSelectedImage) {
+                    const base64 = aiSelectedImage.split(",")[1];
+                    const mime = aiSelectedImage.split(";")[0].split(":")[1];
+                    parts.push({ inline_data: { mime_type: mime, data: base64 } });
+                }
+                const prompt = text
+                    ? `أنت مساعد متخصص في حساب الكربوهيدرات لمرضى السكري. السؤال: "${text}". ${aiSelectedImage ? "انظر للصورة." : ""} أجب بشكل مختصر بالعربي، اذكر الكارب بالغرام للحصة الواحدة.`
+                    : `أنت مساعد متخصص في حساب الكربوهيدرات لمرضى السكري. انظر للصورة وحدد الأكل واحسب الكارب التقريبي بشكل مختصر بالعربي.`;
+                parts.push({ text: prompt });
+
+                const res = await fetch(
+                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+                    { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ contents: [{ parts }] }) }
+                );
+                const data = await res.json();
+                removeAITyping();
+                if (data?.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    appendAIMessage(data.candidates[0].content.parts[0].text, false);
+                } else { appendAIMessage("عذراً، ما قدرت أحصل على إجابة. حاول مرة ثانية.", false); }
+            } catch (e) {
+                removeAITyping();
+                appendAIMessage("فشل الاتصال، تأكد من الإنترنت وحاول مرة ثانية.", false);
+            }
+            btn.disabled = false; btn.classList.remove("opacity-50");
+            aiSelectedImage = null;
+        }
+    </script>
+
 </body>
 </html>
