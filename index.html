@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head>
+<html lang="ar" dir="rtl">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Carbs sa | Dosage Pro</title>
@@ -9,8 +10,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root { 
@@ -22,12 +23,12 @@
         body { 
             background-color: var(--bg-dark); 
             color: #f8fafc; 
-            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-family: 'Tajawal', -apple-system, sans-serif !important;
             overflow-x: hidden; 
             -webkit-font-smoothing: antialiased;
         }
         h1, h2, h3, button, span, input, select, p, textarea {
-            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-family: 'Tajawal', -apple-system, sans-serif !important;
         }
         .glass { 
             background: rgba(12, 12, 12, 0.8); 
@@ -68,108 +69,95 @@
         .header-hidden { transform: translateY(-100%); opacity: 0; }
         .footer-hidden { transform: translateY(100%); opacity: 0; }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.inset-x-0{left:0px;right:0px}.bottom-0{bottom:0px}.left-4{left:1rem}.right-0{right:0px}.top-0{top:0px}.top-4{top:1rem}.-right-2{right:-0.5rem}.-top-2{top:-0.5rem}.z-10{z-index:10}.z-30{z-index:30}.z-40{z-index:40}.z-50{z-index:50}.z-\[500\]{z-index:500}.z-\[510\]{z-index:510}.mx-2{margin-left:0.5rem;margin-right:0.5rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.ml-1{margin-left:0.25rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-2{margin-top:0.5rem}.mt-2\.5{margin-top:0.625rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-auto{margin-top:auto}.mb-2{margin-bottom:0.5rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-14{height:3.5rem}.h-32{height:8rem}.h-5{height:1.25rem}.h-56{height:14rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-20{height:5rem}.h-full{height:100%}.max-h-\[85vh\]{max-height:85vh}.max-h-full{max-height:100%}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-14{width:3.5rem}.w-20{width:5rem}.w-44{width:11rem}.w-5{width:1.25rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-\[1px\]{width:1px}.w-full{width:100%}.min-w-\[36px\]{min-width:36px}.max-w-\[240px\]{max-width:240px}.max-w-full{max-width:100%}.max-w-md{max-width:28rem}.max-w-\[85\%\]{max-width:85%}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.resize-none{resize:none}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-start{justify-content:flex-start}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-0\.5{gap:0.125rem}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-3\.5{gap:0.875rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-t-\[2rem\]{border-top-left-radius:2rem;border-top-right-radius:2rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-none{border-style:none}.border-green-500\/10{border-color:rgb(34 197 94 / 0.1)}.border-green-600{--tw-border-opacity:1;border-color:rgb(22 163 74 / var(--tw-border-opacity, 1))}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.border-green-500\/20{border-color:rgb(34 197 94 / 0.2)}.bg-\[\#030303\]{--tw-bg-opacity:1;background-color:rgb(3 3 3 / var(--tw-bg-opacity, 1))}.bg-\[\#050505\]{--tw-bg-opacity:1;background-color:rgb(5 5 5 / var(--tw-bg-opacity, 1))}.bg-\[\#0d0d0d\]{--tw-bg-opacity:1;background-color:rgb(13 13 13 / var(--tw-bg-opacity, 1))}.bg-black\/40{background-color:rgb(0 0 0 / 0.4)}.bg-black\/90{background-color:rgb(0 0 0 / 0.9)}.bg-black\/95{background-color:rgb(0 0 0 / 0.95)}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-zinc-800{--tw-bg-opacity:1;background-color:rgb(39 39 42 / var(--tw-bg-opacity, 1))}.bg-zinc-900{--tw-bg-opacity:1;background-color:rgb(24 24 27 / var(--tw-bg-opacity, 1))}.bg-zinc-900\/40{background-color:rgb(24 24 27 / 0.4)}.bg-zinc-900\/50{background-color:rgb(24 24 27 / 0.5)}.bg-zinc-900\/80{background-color:rgb(24 24 27 / 0.8)}.bg-zinc-950{--tw-bg-opacity:1;background-color:rgb(9 9 11 / var(--tw-bg-opacity, 1))}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity, 1))}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-white{--tw-gradient-from:#fff var(--tw-gradient-from-position);--tw-gradient-to:rgb(255 255 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-zinc-300{--tw-gradient-to:#d4d4d8 var(--tw-gradient-to-position)}.to-zinc-400{--tw-gradient-to:#a1a1aa var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.pb-48{padding-bottom:12rem}.pb-0\.5{padding-bottom:0.125rem}.pb-12{padding-bottom:3rem}.pb-2{padding-bottom:0.5rem}.pb-3{padding-bottom:0.75rem}.pt-4{padding-top:1rem}.pt-5{padding-top:1.25rem}.pb-6{padding-bottom:1.5rem}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-green-500{--tw-text-opacity:1;color:rgb(34 197 94 / var(--tw-text-opacity, 1))}.text-green-700{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-zinc-300{--tw-text-opacity:1;color:rgb(212 212 216 / var(--tw-text-opacity, 1))}.text-zinc-400{--tw-text-opacity:1;color:rgb(161 161 170 / var(--tw-text-opacity, 1))}.text-zinc-500{--tw-text-opacity:1;color:rgb(113 113 122 / var(--tw-text-opacity, 1))}.text-zinc-600{--tw-text-opacity:1;color:rgb(82 82 91 / var(--tw-text-opacity, 1))}.placeholder-zinc-500::placeholder{--tw-placeholder-opacity:1;color:rgb(113 113 122 / var(--tw-placeholder-opacity, 1))}.placeholder-zinc-600::placeholder{--tw-placeholder-opacity:1;color:rgb(82 82 91 / var(--tw-placeholder-opacity, 1))}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_25px_60px_rgba\(0\2c 0\2c 0\2c 0\.95\)\]{--tw-shadow:0 25px 60px rgba(0,0,0,0.95);--tw-shadow-colored:0 25px 60px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-green-500\/10{--tw-shadow-color:rgb(34 197 94 / 0.1);--tw-shadow:var(--tw-shadow-colored)}.outline-none{outline:2px solid transparent;outline-offset:2px}.drop-shadow-\[0_0_10px_rgba\(34\2c 197\2c 94\2c 0\.15\)\]{--tw-drop-shadow:drop-shadow(0 0 10px rgba(34,197,94,0.15));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-white\/5:hover{background-color:rgb(255 255 255 / 0.05)}.hover\:bg-zinc-800:hover{--tw-bg-opacity:1;background-color:rgb(39 39 42 / var(--tw-bg-opacity, 1))}.hover\:text-green-400:hover{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:ring-0:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.active\:scale-90:active{--tw-scale-x:.9;--tw-scale-y:.9;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}</style><script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-D7Y72MME5D" async=""></script></head>
+</head>
 <body class="select-none pb-48">
 
-    <div id="sectionWelcomeScreen" class="fixed inset-0 z-[500] bg-[#050505] flex flex-col justify-center px-6 max-w-md mx-auto pointer-events-auto" style="display: none;">
+    <div id="sectionWelcomeScreen" class="fixed inset-0 z-[500] bg-[#050505] flex flex-col justify-center px-6 max-w-md mx-auto pointer-events-auto">
         <div class="text-center mb-10 select-none">
             <h2 class="text-3xl font-bold text-white tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">Carbs sa</h2>
             <p class="text-[10px] text-green-500 font-bold uppercase tracking-widest mt-1.5">Dosage Pro Edition</p>
         </div>
         <div class="flex flex-col gap-5 relative z-[510]">
-            <button onclick="enterAppSection('snacks')" style="width:100%;display:block;-webkit-tap-highlight-color:transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center transition-all active:scale-95 shadow-2xl py-8 outline-none cursor-pointer">
+            <button onclick="enterAppSection('snacks')" style="-webkit-tap-highlight-color:transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center transition-all active:scale-95 shadow-2xl py-8 outline-none cursor-pointer">
                 <div class="w-14 h-14 bg-zinc-900/50 rounded-full flex items-center justify-center text-2xl mb-3 border border-white/5 pointer-events-none">🍿</div>
                 <h3 class="text-base font-bold text-white pointer-events-none">سناكات وحلويات</h3>
                 <p class="text-xs text-zinc-400 mt-1 pointer-events-none">شيبسات، شوكولاتة، حلويات ومعمول...</p>
             </button>
-            <button onclick="enterAppSection('restaurants')" style="width:100%;display:block;-webkit-tap-highlight-color:transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center transition-all active:scale-95 shadow-2xl py-8 outline-none cursor-pointer">
+            <button onclick="enterAppSection('restaurants')" style="-webkit-tap-highlight-color:transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center transition-all active:scale-95 shadow-2xl py-8 outline-none cursor-pointer">
                 <div class="w-14 h-14 bg-zinc-900/50 rounded-full flex items-center justify-center text-2xl mb-3 border border-white/5 pointer-events-none">🍔</div>
                 <h3 class="text-base font-bold text-white pointer-events-none">مطاعم ووجبات</h3>
                 <p class="text-xs text-zinc-400 mt-1 pointer-events-none">الوجبات السريعة، الكافيهات والمطاعم...</p>
             </button>
-            <button onclick="openAISection()" style="width:100%;display:block;-webkit-tap-highlight-color:transparent;" class="glass squircle-xl px-5 py-4 flex items-center gap-4 transition-all active:scale-95 outline-none cursor-pointer border border-green-500/10">
-                <div class="w-10 h-10 bg-zinc-900/50 rounded-full flex items-center justify-center text-lg border border-white/5 pointer-events-none flex-shrink-0">🤖</div>
-                <div class="text-right pointer-events-none">
-                    <h3 class="text-sm font-bold text-white">احسب كاربك بالذكاء الاصطناعي</h3>
-                    <p class="text-[10px] text-zinc-500 mt-0.5">أرسل صورة أو اكتب اسم الأكل</p>
-                </div>
-            </button>
         </div>
     </div>
 
-    <div id="appMainContent" class="relative z-10" style="display: block;">
+    <div id="appMainContent" class="relative z-10" style="display: none;">
         <header id="appHeader" class="sticky top-0 z-40 bg-black/90 border-b border-white/5 p-4 backdrop-blur-xl">
             <div class="max-w-md mx-auto flex flex-col gap-3.5">
                 <div class="flex justify-between items-center w-full">
                     <div class="flex items-center gap-2">
                         <button onclick="exitToWelcomeScreen()" class="w-8 h-8 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-xs active:scale-95 text-zinc-400 font-bold ml-1">↩</button>
-                        <div id="adminBackupZone" class="flex items-center"><button onclick="exportCurrentCodeToHTML()" title="نسخة احتياطية" class="w-9 h-9 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-sm active:scale-95 transition-transform ml-1">💾</button></div>
+                        <div id="adminBackupZone" class="hidden flex items-center"><button onclick="exportCurrentCodeToHTML()" class="w-9 h-9 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-sm active:scale-95 ml-1">💾</button></div>
                         <h1 class="text-lg font-bold text-white tracking-tight">Carbs sa</h1>
                     </div>
-                    <div id="headerControlsRow" class="flex items-center gap-2">
-                        <button onclick="openFeedbackModal()" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm active:scale-95 transition-transform">📣</button>
+                    <div class="flex items-center gap-2">
+                        <button onclick="openFeedbackModal()" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm active:scale-95">📣</button>
                         <div class="flex items-center bg-zinc-900 px-2.5 py-1 squircle-md border border-white/5 gap-2.5">
                             <button onclick="changeRatio(-1)" class="text-green-500 font-bold text-lg px-1 active:scale-90">-</button>
                             <div class="text-center min-w-[36px] flex flex-col items-center justify-center relative">
-                                <span onclick="showRatioExplanation()" class="text-[8px] text-zinc-400 font-bold uppercase cursor-pointer hover:text-green-400 flex items-center gap-0.5 pb-0.5">RATIO</span>
+                                <span onclick="showRatioExplanation()" class="text-[8px] text-zinc-400 font-bold uppercase cursor-pointer pb-0.5">RATIO</span>
                                 <span class="font-bold text-white text-xs tracking-tight" id="ratioValue">10</span>
                             </div>
                             <button onclick="changeRatio(1)" class="text-green-500 font-bold text-lg px-1 active:scale-90">+</button>
                         </div>
-                        <div id="adminAddZone" class="flex items-center"><button id="addGlobalBtn" onclick="openAddModal()" class="w-9 h-9 bg-green-500 text-black squircle-md flex items-center justify-center font-bold text-xl active:scale-95 transition-transform">+</button></div>
+                        <div id="adminAddZone" class="hidden flex items-center"><button onclick="openAddModal()" class="w-9 h-9 bg-green-500 text-black squircle-md flex items-center justify-center font-bold text-xl active:scale-95">+</button></div>
                     </div>
                 </div>
                 <div class="flex gap-2 w-full relative">
-                    <div class="relative flex-shrink-0" id="categoryMenuContainer" style="display: block;">
-                        <button onclick="toggleCategoryDropdown()" id="categoryMenuBtn" class="h-10 px-3 bg-zinc-900 text-white text-xs font-bold squircle-md border border-white/5 active:scale-95 transition-all flex items-center gap-1.5">
+                    <div class="relative flex-shrink-0" id="categoryMenuContainer">
+                        <button onclick="toggleCategoryDropdown()" id="categoryMenuBtn" class="h-10 px-3 bg-zinc-900 text-white text-xs font-bold squircle-md border border-white/5 active:scale-95 flex items-center gap-1.5">
                             <span>🗂️</span> <span id="currentCategoryLabel">الكل</span> <span class="text-[8px] text-zinc-500">▼</span>
                         </button>
                         <div id="categoryDropdown" class="absolute right-0 mt-2 w-44 bg-[#0d0d0d] border border-white/10 squircle-md shadow-2xl p-1 hidden flex-col z-50">
                             <button onclick="selectCategory('all', 'الكل')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg active-category" id="opt-all">الكل</button>
-                            <div id="dynamicCategoriesContainer" class="flex flex-col"><button onclick="selectCategory('chips', 'شبسات')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg " id="opt-chips">شبسات</button><button onclick="selectCategory('chocolate', 'شكولاتات')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg " id="opt-chocolate">شكولاتات</button><button onclick="selectCategory('biscuits', 'بسكويتات')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg " id="opt-biscuits">بسكويتات</button><button onclick="selectCategory('icecream', 'آيسكريم')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg " id="opt-icecream">آيسكريم</button><button onclick="selectCategory('cake', 'كيك')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg " id="opt-cake">كيك</button><button onclick="selectCategory('sweets', 'حلويات')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg " id="opt-sweets">حلويات</button><button onclick="selectCategory('maamoul', 'معمول')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg " id="opt-maamoul">معمول</button></div>
+                            <div id="dynamicCategoriesContainer" class="flex flex-col"></div>
                         </div>
                     </div>
-                    <input type="text" id="searchInput" oninput="render()" placeholder="ابحث عن منتجك المفضل..." class="flex-1 p-2.5 squircle-md bg-zinc-900 text-right outline-none border border-white/5 text-xs text-white shadow-inner placeholder-zinc-500">
+                    <input type="text" id="searchInput" oninput="render()" placeholder="ابحث عن منتجك المفضل..." class="flex-1 p-2.5 squircle-md bg-zinc-900 text-right outline-none border border-white/5 text-xs text-white placeholder-zinc-500">
                 </div>
             </div>
         </header>
 
-        <div class="max-w-md mx-auto px-4 mt-2" id="adminFeedbackListZone"><button onclick="openAdminFeedbacksListModal()" class="w-full py-3 bg-zinc-900 hover:bg-zinc-800 text-green-500 border border-green-500/20 squircle-md text-xs font-bold active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg mb-2"><span>📋</span> عرض الشكاوى والمقترحات الحية</button></div>
-        <main id="snackList" class="max-w-md mx-auto flex flex-col px-4 mt-3"><div class="text-center text-zinc-600 text-xs py-10">لا يوجد نتائج تطابق بحثك</div></main>
+        <div class="max-w-md mx-auto px-4 mt-2 hidden" id="adminFeedbackListZone"><button onclick="openAdminFeedbacksListModal()" class="w-full py-3 bg-zinc-900 text-green-500 border border-green-500/20 squircle-md text-xs font-bold active:scale-95 flex items-center justify-center gap-2"><span>📋</span> عرض الشكاوى حية</button></div>
+        <main id="snackList" class="max-w-md mx-auto flex flex-col px-4 mt-3"></main>
 
         <div id="detailsModal" class="fixed inset-0 z-50 bg-[#030303] hidden flex-col overflow-y-auto no-scrollbar">
             <div class="w-full max-w-md mx-auto flex flex-col relative min-h-screen pb-12">
                 <div class="w-full h-56 bg-zinc-950 relative overflow-hidden flex items-center justify-center border-b border-white/5 p-6 mt-2">
-                    <img id="detImgView" src="https://placehold.co/400x300/141414/666?text=No+Image" class="max-w-full max-h-full object-contain squircle-lg" onerror="this.src='https://placehold.co/400x300/141414/666?text=No+Image'">
+                    <img id="detImgView" src="" class="max-w-full max-h-full object-contain squircle-lg" onerror="this.src='https://placehold.co/400x300/141414/666?text=No+Image'">
                     <button onclick="closeModal('detailsModal')" class="absolute top-4 left-4 w-9 h-9 flex items-center justify-center bg-zinc-900/80 backdrop-blur-md rounded-full border border-white/10 text-white">✕</button>
                 </div>
                 <div class="flex-1 px-6 flex flex-col justify-between pt-5">
                     <div class="text-right">
                         <h2 id="detName" class="text-xl font-bold text-white mb-4">--</h2>
                         <div class="mb-5 bg-zinc-900/40 p-4 squircle-lg border border-white/5 flex flex-col gap-2.5">
-                            <label class="text-[10px] text-zinc-400 block font-bold uppercase tracking-wider">الكمية أو عدد العبوات المتناولة:</label>
+                            <label class="text-[10px] text-zinc-400 block font-bold uppercase">عدد العبوات المتناولة:</label>
                             <div class="flex items-center justify-between bg-black/40 p-1.5 squircle-md border border-white/5 max-w-[240px] mx-auto w-full">
-                                <button onclick="adjustMultiplierStep(-0.25)" class="w-10 h-10 bg-zinc-900 rounded-xl text-zinc-300 font-bold text-lg active:scale-90">-</button>
-                                <input type="number" id="customMultiplierInput" step="0.01" min="0.01" class="w-20 text-center font-bold text-base bg-transparent border-none text-white outline-none focus:ring-0" oninput="handleManualMultiplierInput(this.value)">
-                                <button onclick="adjustMultiplierStep(0.25)" class="w-10 h-10 bg-zinc-900 rounded-xl text-green-500 font-bold text-lg active:scale-90">+</button>
+                                <button onclick="adjustMultiplierStep(-0.25)" class="w-10 h-10 bg-zinc-900 rounded-xl text-zinc-300 font-bold text-lg">-</button>
+                                <input type="number" id="customMultiplierInput" step="0.01" min="0.01" class="w-20 text-center font-bold text-base bg-transparent text-white outline-none" oninput="handleManualMultiplierInput(this.value)">
+                                <button onclick="adjustMultiplierStep(0.25)" class="w-10 h-10 bg-zinc-900 rounded-xl text-green-500 font-bold text-lg">+</button>
                             </div>
                         </div>
                         <div class="flex flex-col border-t border-white/5 mb-6">
+                            <div class="flex justify-between items-center py-4 border-b border-white/5 text-xs"><span id="detWeight" class="text-white font-bold">--</span><span class="text-zinc-400">الوزن / الحجم بالكامل للوحدة</span></div>
                             <div class="flex justify-between items-center py-4 border-b border-white/5 text-xs">
-                                <span id="detWeight" class="text-white font-bold">--</span>
-                                <span class="text-zinc-400">الحجم / الوزن الكلي</span>
-                            </div>
-                            <div class="flex justify-between items-center py-4 border-b border-white/5 text-xs">
-                                <div class="flex flex-col items-start">
-                                    <span id="detCarbs" class="text-white font-bold text-base text-green-400">0.0</span>
-                                    <span id="detCarbsCalc" class="text-[10px] text-zinc-500 font-bold hidden"></span>
-                                </div>
-                                <span class="text-zinc-400">الكربوهيدرات الكلية المحسوبة</span>
+                                <div class="flex flex-col items-start"><span id="detCarbs" class="text-white font-bold text-base text-green-400">0.0</span><span id="detCarbsCalc" class="text-[10px] text-zinc-500 font-bold hidden"></span></div>
+                                <span class="text-zinc-400">الكربوهيدرات الكلية</span>
                             </div>
                         </div>
                     </div>
                     <div class="flex flex-col gap-3 mt-auto">
-                        <button onclick="toggleSelectFromDetails()" id="detAddBtn" class="w-full py-4 bg-green-500 border border-green-600 text-black squircle-lg font-bold text-sm active:scale-95 transition-all shadow-lg shadow-green-500/10">＋ إضافة المنتج للإجمالي اليومي</button>
+                        <button onclick="toggleSelectFromDetails()" id="detAddBtn" class="w-full py-4 bg-green-500 text-black squircle-lg font-bold text-sm active:scale-95 shadow-lg">＋ إضافة المنتج للإجمالي</button>
                         <div id="adminActionsZone" class="flex flex-col gap-3"></div>
                     </div>
                 </div>
@@ -179,7 +167,7 @@
         <div id="adminFeedbacksModal" class="fixed inset-0 z-50 bg-[#050505] hidden flex-col overflow-y-auto no-scrollbar">
             <div class="w-full max-w-md mx-auto flex flex-col relative min-h-screen p-4 pb-12 text-right">
                 <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3 mt-2">
-                    <button onclick="closeModal('adminFeedbacksModal')" class="w-8 h-8 flex items-center justify-center bg-zinc-900 border border-white/10 squircle-md text-zinc-400 hover:text-white text-xs font-bold">✕</button>
+                    <button onclick="closeModal('adminFeedbacksModal')" class="w-8 h-8 flex items-center justify-center bg-zinc-900 border border-white/10 squircle-md text-zinc-400 text-xs font-bold">✕</button>
                     <h2 class="text-sm font-bold text-white">📋 صندوق المقترحات</h2>
                 </div>
                 <div id="feedbacksItemsContainer" class="flex flex-col gap-3"></div>
@@ -188,93 +176,61 @@
 
         <div id="editModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-end justify-center p-4">
             <div class="w-full max-w-md bg-[#0d0d0d] rounded-t-[2rem] border border-white/10 p-6 modal-animate max-h-[85vh] overflow-y-auto no-scrollbar shadow-2xl">
-                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3">
-                    <button onclick="closeModal('editModal')" class="text-zinc-500 hover:text-white text-lg font-bold">✕</button>
-                    <h2 class="text-sm font-bold text-white">تعديل البيانات</h2>
-                </div>
+                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3"><button onclick="closeModal('editModal')" class="text-zinc-500 text-lg font-bold">✕</button><h2 class="text-sm font-bold text-white">تعديل البيانات</h2></div>
                 <div class="flex flex-col gap-4 text-right">
-                    <input type="hidden" id="editId" value="">
-                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الاسم</label><input type="text" id="editName" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
-                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الفئة</label>
-                        <select id="editCategory" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white font-bold">
-                            <option value="chips">شبسات</option><option value="chocolate">شكولاتات</option><option value="biscuits">بسكويتات</option><option value="icecream">آيسكريم</option><option value="cake">كيك</option><option value="sweets">حلويات</option><option value="maamoul">معمول</option><option value="restaurants">مطاعم</option>
-                        </select>
-                    </div>
+                    <input type="hidden" id="editId"><input type="text" id="editName" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs">
+                    <select id="editCategory" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white font-bold">
+                        <option value="chips">شبسات</option><option value="chocolate">شكولاتات</option><option value="biscuits">بسكويتات</option><option value="icecream">آيسكريم</option><option value="cake">كيك</option><option value="sweets">حلويات</option><option value="maamoul">معمول</option><option value="restaurants">مطاعم</option>
+                    </select>
                     <div class="grid grid-cols-2 gap-3">
-                        <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الوزن</label><input type="text" id="editWeight" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
-                        <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الكارب</label><input type="number" step="0.1" id="editCarbs" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                        <input type="text" id="editWeight" class="w-full p-3 squircle-md border border-white/5 text-xs">
+                        <input type="number" step="0.1" id="editCarbs" class="w-full p-3 squircle-md border border-white/5 text-xs">
                     </div>
-                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">السعرات</label><input type="number" id="editCal" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
-                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">رابط الصورة</label><input type="text" id="editImg" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
-                    <div class="flex gap-2 mt-4 border-t border-white/5 pt-4">
-                        <button onclick="closeModal('editModal')" class="flex-1 py-3 bg-zinc-900 text-zinc-400 rounded-xl font-bold">إلغاء</button>
-                        <button onclick="saveProductEdits()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold">💾 حفظ</button>
-                    </div>
+                    <input type="number" id="editCal" class="w-full p-3 squircle-md border border-white/5 text-xs">
+                    <input type="text" id="editImg" class="w-full p-3 squircle-md border border-white/5 text-xs">
+                    <div class="flex gap-2 mt-4 border-t border-white/5 pt-4"><button onclick="closeModal('editModal')" class="flex-1 py-3 bg-zinc-900 text-zinc-400 rounded-xl">إلغاء</button><button onclick="saveProductEdits()" class="flex-1 py-3 bg-green-500 text-black rounded-xl">💾 حفظ</button></div>
                 </div>
             </div>
         </div>
 
         <div id="addModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-end justify-center p-4">
-            <div class="w-full max-w-md bg-[#0d0d0d] rounded-t-[2rem] border border-white/10 p-6 modal-animate max-h-[85vh] overflow-y-auto no-scrollbar shadow-2xl">
-                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3">
-                    <button onclick="closeModal('addModal')" class="text-zinc-500 hover:text-white text-lg font-bold">✕</button>
-                    <h2 class="text-sm font-bold text-white">إضافة منتج</h2>
-                </div>
+            <div class="w-full max-w-md bg-[#0d0d0d] rounded-t-[2rem] border border-white/10 p-6 modal-animate max-h-[85vh] overflow-y-auto no-scrollbar">
+                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3"><button onclick="closeModal('addModal')" class="text-zinc-500 text-lg font-bold">✕</button><h2 class="text-sm font-bold text-white">إضافة منتج</h2></div>
                 <div class="flex flex-col gap-4 text-right">
-                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الاسم</label><input type="text" id="newName" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
-                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الفئة</label>
-                        <select id="newCategory" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white font-bold">
-                            <option value="chips">شبسات</option><option value="chocolate">شكولاتات</option><option value="biscuits">بسكويتات</option><option value="icecream">آيسكريم</option><option value="cake">كيك</option><option value="sweets">حلويات</option><option value="maamoul">معمول</option><option value="restaurants">مطاعم</option>
-                        </select>
-                    </div>
+                    <input type="text" id="newName" placeholder="الاسم" class="w-full p-3 squircle-md border border-white/5 text-xs">
+                    <select id="newCategory" class="w-full p-3 squircle-md border border-white/5 text-xs bg-zinc-900 text-white font-bold">
+                        <option value="chips">شبسات</option><option value="chocolate">شكولاتات</option><option value="biscuits">بسكويتات</option><option value="icecream">آيسكريم</option><option value="cake">كيك</option><option value="sweets">حلويات</option><option value="maamoul">معمول</option><option value="restaurants">مطاعم</option>
+                    </select>
                     <div class="grid grid-cols-2 gap-3">
-                        <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الوزن</label><input type="text" id="newWeight" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
-                        <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">الكارب</label><input type="number" step="0.1" id="newCarbs" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
+                        <input type="text" id="newWeight" placeholder="الوزن" class="w-full p-3 squircle-md border border-white/5 text-xs">
+                        <input type="number" step="0.1" id="newCarbs" placeholder="الكارب" class="w-full p-3 squircle-md border border-white/5 text-xs">
                     </div>
-                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">السعرات</label><input type="number" id="newCal" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
-                    <div><label class="text-[10px] text-zinc-400 block mb-1 font-bold">رابط الصورة</label><input type="text" id="newImg" autocomplete="off" class="w-full p-3 squircle-md border border-white/5 outline-none text-xs"></div>
-                    <div class="flex gap-3 mt-4 border-t border-white/5 pt-4">
-                        <button onclick="closeModal('addModal')" class="flex-1 py-3 bg-zinc-800 text-white rounded-xl font-bold">إلغاء</button>
-                        <button onclick="addNewSnack()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold">إضافة</button>
-                    </div>
+                    <input type="number" id="newCal" placeholder="السعرات" class="w-full p-3 squircle-md border border-white/5 text-xs">
+                    <input type="text" id="newImg" placeholder="رابط الصورة" class="w-full p-3 squircle-md border border-white/5 text-xs">
+                    <div class="flex gap-3 mt-4 border-t border-white/5 pt-4"><button onclick="closeModal('addModal')" class="flex-1 py-3 bg-zinc-800 text-white rounded-xl">إلغاء</button><button onclick="addNewSnack()" class="flex-1 py-3 bg-green-500 text-black rounded-xl">إضافة</button></div>
                 </div>
             </div>
         </div>
 
         <div id="feedbackModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4">
             <div class="w-full max-w-md bg-[#0d0d0d] rounded-2xl border border-white/10 p-6 shadow-2xl text-right">
-                <div class="flex justify-between items-center mb-4 border-b border-white/5 pb-2">
-                    <button onclick="closeModal('feedbackModal')" class="text-zinc-500 hover:text-white text-base font-bold">✕</button>
-                    <h2 class="text-sm font-bold text-white">📣 الشكاوى والمقترحات</h2>
-                </div>
-                <textarea id="feedbackText" placeholder="اكتب هنا تفاصيل شكواك..." class="w-full h-32 p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white resize-none mb-4 placeholder-zinc-600"></textarea>
-                <div class="flex gap-2">
-                    <button onclick="closeModal('feedbackModal')" class="flex-1 py-3 bg-zinc-800 text-zinc-400 rounded-xl font-bold">إلغاء</button>
-                    <button onclick="sendFeedbackToFirebase()" class="flex-1 py-3 bg-green-500 text-black rounded-xl font-bold active:scale-95 transition-transform">🚀 إرسال</button>
-                </div>
+                <div class="flex justify-between items-center mb-4 border-b border-white/5 pb-2"><button onclick="closeModal('feedbackModal')" class="text-zinc-500 text-base font-bold">✕</button><h2 class="text-sm font-bold text-white">📣 الشكاوى والمقترحات</h2></div>
+                <textarea id="feedbackText" placeholder="اكتب هنا تفاصيل شكواك..." class="w-full h-32 p-3 squircle-md border border-white/5 outline-none text-xs bg-zinc-900 text-white resize-none mb-4"></textarea>
+                <div class="flex gap-2"><button onclick="closeModal('feedbackModal')" class="flex-1 py-3 bg-zinc-800 text-zinc-400 rounded-xl">إلغاء</button><button onclick="sendFeedbackToFirebase()" class="flex-1 py-3 bg-green-500 text-black rounded-xl">🚀 إرسال</button></div>
             </div>
         </div>
 
         <footer id="mainFooter" class="fixed bottom-0 inset-x-0 z-30">
             <div class="max-w-md mx-auto p-4">
-                <div class="glass squircle-xl p-5 flex justify-between items-center text-white shadow-[0_25px_60px_rgba(0,0,0,0.95)] relative border border-white/10">
+                <div class="glass squircle-xl p-5 flex justify-between items-center text-white shadow-[0_25px_60px_rgba(0,0,0,0.95)] border border-white/10">
                     <div class="text-right flex flex-col">
-                        <p class="text-[9px] text-zinc-400 font-bold mb-1 uppercase tracking-widest flex items-center gap-2">
-                            إجمالي الكارب
-                            <button onclick="clearAllSelectedItems()" title="تصفير الحسبة" class="w-5 h-5 bg-zinc-900/80 border border-white/5 text-red-400 rounded flex items-center justify-center text-[10px] active:scale-90 transition-transform">🧹</button>
-                        </p>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300" id="totalCarbs">0.0</span>
-                            <span class="text-[9px] text-zinc-500 font-bold">G</span>
-                        </div>
+                        <p class="text-[9px] text-zinc-400 font-bold mb-1 uppercase tracking-widest flex items-center gap-2">إجمالي الكارب <button onclick="clearAllSelectedItems()" class="w-5 h-5 bg-zinc-900/80 text-red-400 rounded flex items-center justify-center text-[10px]">🧹</button></p>
+                        <div class="flex items-baseline gap-1"><span class="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300" id="totalCarbs">0.0</span><span class="text-[9px] text-zinc-500 font-bold">G</span></div>
                     </div>
                     <div class="h-10 w-[1px] bg-white/10 mx-2"></div>
                     <div class="text-center flex flex-col items-center">
                         <p class="text-[9px] text-green-400 font-bold mb-1 uppercase tracking-widest">الجرعة المقترحة</p>
-                        <div class="flex items-center justify-center gap-1">
-                            <span class="text-4xl font-bold text-green-400 tracking-tight drop-shadow-[0_0_10px_rgba(34,197,94,0.15)]" id="insulinDose">0.0</span>
-                            <span class="text-[9px] text-green-700 font-bold mt-2.5">Unit</span>
-                        </div>
+                        <div class="flex items-center justify-center gap-1"><span class="text-4xl font-bold text-green-400 tracking-tight" id="insulinDose">0.0</span><span class="text-[9px] text-green-700 font-bold mt-2.5">Unit</span></div>
                     </div>
                 </div>
             </div>
@@ -306,24 +262,11 @@
 
         const categoryTranslations = { all: 'الكل', chips: 'شبسات', chocolate: 'شكولاتات', biscuits: 'بسكويتات', icecream: 'آيسكريم', cake: 'كيك', sweets: 'حلويات', maamoul: 'معمول', restaurants: 'مطاعم' };
 
-        // ── Admin via URL key ──
-        function getUrlKey() {
-            return new URLSearchParams(window.location.search).get('key') || '';
-        }
+        function getSavedAdminKey() { return sessionStorage.getItem("admin_session_token") || ""; }
+        function isAdmin() { return getSavedAdminKey().length > 0; }
 
-        function getSavedAdminKey() {
-            return sessionStorage.getItem("admin_session_token") || "";
-        }
-
-        function isAdmin() {
-            return getSavedAdminKey().length > 0;
-        }
-
-        // Check URL for admin key on load — ONLY activate admin from URL key
         (function checkAdminKey() {
-            const urlKey = getUrlKey();
-            // Always clear session on load — only re-set if valid key in URL
-            sessionStorage.removeItem("admin_session_token");
+            const urlKey = new URLSearchParams(window.location.search).get('key') || '';
             if (!urlKey) return;
             db.ref('admin_secret_key').once('value', snapshot => {
                 const storedKey = snapshot.val();
@@ -335,7 +278,7 @@
             });
         })();
 
-        // ── Scroll hide/show ──
+        // إخفاء العناوين والقائمة السفلية عند السكرول للمظهر الاحترافي
         let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
             if (activeAppSection === null) return;
@@ -352,7 +295,6 @@
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }, false);
 
-        // ── Firebase load products ──
         db.ref('products').on('value', (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -381,7 +323,6 @@
             activeAppSection = section;
             document.getElementById('sectionWelcomeScreen').style.display = 'none';
             document.getElementById('appMainContent').style.display = 'block';
-            document.getElementById('appMainContent').classList.remove('hidden');
             if (section === 'restaurants') {
                 currentCategory = 'restaurants';
                 document.getElementById('categoryMenuContainer').style.display = 'none';
@@ -399,18 +340,16 @@
             activeAppSection = null;
             document.getElementById('appMainContent').style.display = 'none';
             document.getElementById('sectionWelcomeScreen').style.display = 'flex';
-            document.getElementById('sectionWelcomeScreen').classList.remove('hidden');
         }
 
         function showRatioExplanation() {
-            alert("ℹ️ شرح النسبة (Ratio):\n\nهو معامل الكربوهيدرات الخاص بك، ويمثل كمية غرامات الكربوهيدرات التي تغطيها وحدة أنسولين واحدة سريعة المفعول.\n\nمثال: إذا كان الـ Ratio عندك يساوي 10، فهذا يعني أن كل 10 غرامات كارب تأكلها تحتاج مقابلها وحدة أنسولين واحدة (1 Unit).");
-            analytics.logEvent('view_ratio_explanation');
+            alert("ℹ️ معامل الكربوهيدرات (Ratio):\nيمثل كمية غرامات الكربوهيدرات التي تغطيها وحدة أنسولين واحدة.");
         }
 
         function injectAdminUI() {
-            document.getElementById('adminBackupZone').innerHTML = `<button onclick="exportCurrentCodeToHTML()" title="نسخة احتياطية" class="w-9 h-9 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-sm active:scale-95 transition-transform ml-1">💾</button>`;
-            document.getElementById('adminAddZone').innerHTML = `<button id="addGlobalBtn" onclick="openAddModal()" class="w-9 h-9 bg-green-500 text-black squircle-md flex items-center justify-center font-bold text-xl active:scale-95 transition-transform">+</button>`;
-            document.getElementById('adminFeedbackListZone').innerHTML = `<button onclick="openAdminFeedbacksListModal()" class="w-full py-3 bg-zinc-900 hover:bg-zinc-800 text-green-500 border border-green-500/20 squircle-md text-xs font-bold active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg mb-2"><span>📋</span> عرض الشكاوى والمقترحات الحية</button>`;
+            document.getElementById('adminBackupZone').classList.remove('hidden');
+            document.getElementById('adminAddZone').classList.remove('hidden');
+            document.getElementById('adminFeedbackListZone').classList.remove('hidden');
             listenToFeedbacksLive();
         }
 
@@ -426,8 +365,7 @@
             const baseTypes = ['chips', 'chocolate', 'biscuits', 'icecream', 'cake', 'sweets', 'maamoul'];
             container.innerHTML = baseTypes.map(type => {
                 const label = categoryTranslations[type] || type;
-                const isAct = currentCategory === type ? 'active-category' : '';
-                return `<button onclick="selectCategory('${type}', '${label}')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg ${isAct}" id="opt-${type}">${label}</button>`;
+                return `<button onclick="selectCategory('${type}', '${label}')" class="w-full text-right px-3 py-2.5 text-xs text-zinc-300 hover:bg-white/5 rounded-lg ${currentCategory === type ? 'active-category' : ''}" id="opt-${type}">${label}</button>`;
             }).join('');
         }
 
@@ -437,9 +375,6 @@
             currentCategory = type;
             document.getElementById('currentCategoryLabel').innerText = label;
             document.getElementById('categoryDropdown').classList.add('hidden');
-            document.querySelectorAll('#categoryDropdown button').forEach(b => b.classList.remove('active-category'));
-            const activeBtn = document.getElementById('opt-' + type);
-            if (activeBtn) activeBtn.classList.add('active-category');
             render();
         }
 
@@ -463,11 +398,11 @@
                     <div onclick="openDetailsModal(${snack.id})" class="snack-card p-4 squircle-xl flex items-center justify-between gap-4 ${isSelected ? 'selected-card' : ''}">
                         <div class="flex items-center gap-3 flex-1 min-w-0 text-right">
                             <div class="w-12 h-12 bg-zinc-950/40 squircle-sm overflow-hidden flex-shrink-0 flex items-center justify-center p-1 border border-white/5">
-                                <img src="${snack.img || 'https://placehold.co/100x100/141414/666?text=Snack'}" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100/141414/666?text=Snack'">
+                                <img src="${snack.img || 'https://placehold.co/100x100/141414/666?text=Snack'}" class="w-full h-full object-contain">
                             </div>
                             <div class="flex flex-col min-w-0">
-                                <span class="text-[10px] text-green-400 font-bold tracking-wide">${snack.weight || 'N/A'} • ${(snack.carbs || 0).toFixed(1)}G كارب</span>
-                                <h3 class="font-bold text-white text-[14px] truncate mt-0.5 tracking-tight">${snack.name}${qtyText}</h3>
+                                <span class="text-[10px] text-green-400 font-bold">${snack.weight || 'N/A'} • ${(snack.carbs || 0).toFixed(1)}G كارب</span>
+                                <h3 class="font-bold text-white text-[14px] truncate mt-0.5">${snack.name}${qtyText}</h3>
                             </div>
                         </div>
                         <div class="flex items-center gap-2 text-[10px] text-zinc-500 font-bold">${snack.cal || 0} 🔥</div>
@@ -484,8 +419,8 @@
             document.getElementById('detImgView').src = snack.img || 'https://placehold.co/400x300/141414/666?text=No+Image';
             document.getElementById('customMultiplierInput').value = activeMultiplier;
             document.getElementById('adminActionsZone').innerHTML = isAdmin() ? `
-                <button onclick="triggerEditFromDetails()" class="w-full py-4 bg-zinc-900 border border-white/5 squircle-lg flex items-center justify-center gap-2 text-sm text-white font-bold active:scale-95 transition-all">✏️ تعديل بيانات المنتج</button>
-                <button onclick="deleteProductFromFirebase()" class="w-full py-4 bg-red-950 border border-red-700/50 squircle-lg flex items-center justify-center gap-2 text-sm text-red-100 font-bold active:scale-95 transition-all">🗑️ حذف المنتج نهائياً</button>
+                <button onclick="triggerEditFromDetails()" class="w-full py-4 bg-zinc-900 border border-white/5 squircle-lg flex items-center justify-center gap-2 text-sm text-white font-bold">✏️ تعديل بيانات المنتج</button>
+                <button onclick="deleteProductFromFirebase()" class="w-full py-4 bg-red-950 border border-red-700/50 squircle-lg flex items-center justify-center gap-2 text-sm text-red-100 font-bold">🗑️ حذف المنتج نهائياً</button>
             ` : '';
             updateDetailsModalValues(snack);
             document.getElementById('detailsModal').style.display = 'flex';
@@ -516,11 +451,11 @@
             } else { calcLabel.classList.add('hidden'); }
             const btn = document.getElementById('detAddBtn');
             if (activeDetailsId in selectedItemsMap) {
-                btn.className = "w-full py-4 bg-red-950/80 border border-red-700/40 text-red-200 squircle-lg font-bold active:scale-95 transition-all";
+                btn.className = "w-full py-4 bg-red-950/80 border border-red-700/40 text-red-200 squircle-lg font-bold";
                 btn.innerHTML = `🗑️ إزالة المنتج من الحسبة`;
             } else {
-                btn.className = "w-full py-4 bg-green-500 border border-green-600 text-black squircle-lg font-bold text-sm active:scale-95 transition-all shadow-lg shadow-green-500/10";
-                btn.innerHTML = `＋ إضافة المنتج للإجمالي اليومي`;
+                btn.className = "w-full py-4 bg-green-500 text-black squircle-lg font-bold text-sm shadow-lg";
+                btn.innerHTML = `＋ إضافة المنتج للإجمالي`;
             }
         }
 
@@ -546,7 +481,7 @@
 
         function clearAllSelectedItems() {
             if (Object.keys(selectedItemsMap).length === 0) return;
-            if (confirm("هل تريد مسح جميع المنتجات المحددة وتصفير الحسبة?")) {
+            if (confirm("هل تريد مسح جميع المنتجات المحددة وتصفير الحسبة؟")) {
                 selectedItemsMap = {};
                 localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
                 updateStats(); render();
@@ -636,7 +571,7 @@
                 const data = snapshot.val();
                 if (!data) { container.innerHTML = `<div class="text-center text-zinc-600 text-xs py-10">لا توجد شكاوى 🌟</div>`; return; }
                 container.innerHTML = Object.keys(data).sort((a, b) => b - a).filter(id => data[id]).map(id =>
-                    `<div class="bg-zinc-900/80 p-4 rounded-xl border border-white/5 flex flex-col gap-2 text-right">
+                    `<div class="bg-zinc-900/80 p-4 rounded-xl border border-white/5 text-right">
                         <div class="text-[10px] text-zinc-500">🕒 ${data[id].time}</div>
                         <p class="text-xs text-white">${data[id].message}</p>
                     </div>`
@@ -660,152 +595,6 @@
             }
         });
     </script>
+</body>
+</html>
 
-    <!-- AI Section Modal -->
-    <div id="aiModal" class="fixed inset-0 z-[500] bg-[#050505] hidden flex-col">
-        <div class="max-w-md mx-auto w-full flex flex-col h-full">
-            <div class="flex items-center justify-between p-4 border-b border-white/5 bg-black/90 backdrop-blur-xl">
-                <button onclick="closeAISection()" class="w-8 h-8 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-xs active:scale-95 text-zinc-400 font-bold">↩</button>
-                <div class="text-center">
-                    <h1 class="text-sm font-bold text-white">🤖 احسب كاربك</h1>
-                    <p class="text-[9px] text-zinc-500">مدعوم بـ Groq AI</p>
-                </div>
-                <button onclick="clearAIChat()" class="w-8 h-8 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-xs active:scale-95 text-red-400">🧹</button>
-            </div>
-            <div id="aiChatMessages" class="flex-1 overflow-y-auto no-scrollbar p-4 flex flex-col gap-3 pb-6">
-                <div class="flex justify-start">
-                    <div class="bg-zinc-900 border border-white/5 squircle-lg p-3 max-w-[85%] text-xs text-zinc-300 leading-relaxed">
-                        مرحبا! 👋 أرسل لي صورة أكل أو اكتب اسمه وأحسب لك الكارب فوراً 🍽️
-                    </div>
-                </div>
-            </div>
-            <div class="p-4 border-t border-white/5 bg-black/90 backdrop-blur-xl">
-                <div id="aiImagePreview" class="hidden mb-3 relative">
-                    <img id="aiPreviewImg" class="w-20 h-20 object-cover squircle-md border border-white/10">
-                    <button onclick="removeAIImage()" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-white text-[10px] flex items-center justify-center">✕</button>
-                </div>
-                <div class="flex gap-2 items-end">
-                    <label for="aiImageInput" class="w-10 h-10 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-base cursor-pointer active:scale-95 flex-shrink-0">📷</label>
-                    <input type="file" id="aiImageInput" accept="image/*" class="hidden" onchange="handleAIImageSelect(this)">
-                    <textarea id="aiTextInput" placeholder="اكتب اسم الأكل أو الوجبة..." rows="1" class="flex-1 p-2.5 squircle-md bg-zinc-900 text-right outline-none border border-white/5 text-xs text-white resize-none placeholder-zinc-500" oninput="this.style.height=\'auto\';this.style.height=this.scrollHeight+\'px\'" onkeydown="if(event.key===\'Enter\'&amp;&amp;!event.shiftKey){event.preventDefault();sendAIMessage();}"></textarea>
-                    <button onclick="sendAIMessage()" id="aiSendBtn" class="w-10 h-10 bg-green-500 squircle-md flex items-center justify-center text-black font-bold text-base active:scale-95 flex-shrink-0">↑</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const GROQ_KEY = "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";
-        let aiSelectedImage = null;
-
-        function openAISection() { document.getElementById("aiModal").style.display = "flex"; }
-        function closeAISection() { document.getElementById("aiModal").style.display = "none"; }
-
-        function clearAIChat() {
-            aiSelectedImage = null;
-            document.getElementById("aiImagePreview").classList.add("hidden");
-            document.getElementById("aiTextInput").value = "";
-            document.getElementById("aiChatMessages").innerHTML = `
-                <div class="flex justify-start">
-                    <div class="bg-zinc-900 border border-white/5 squircle-lg p-3 max-w-[85%] text-xs text-zinc-300 leading-relaxed">
-                        مرحبا! 👋 أرسل لي صورة أكل أو اكتب اسمه وأحسب لك الكارب فوراً 🍽️
-                    </div>
-                </div>`;
-        }
-
-        function handleAIImageSelect(input) {
-            const file = input.files[0]; if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                aiSelectedImage = e.target.result;
-                document.getElementById("aiPreviewImg").src = aiSelectedImage;
-                document.getElementById("aiImagePreview").classList.remove("hidden");
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function removeAIImage() {
-            aiSelectedImage = null;
-            document.getElementById("aiImagePreview").classList.add("hidden");
-            document.getElementById("aiImageInput").value = "";
-        }
-
-        function appendAIMessage(text, isUser) {
-            const container = document.getElementById("aiChatMessages");
-            const div = document.createElement("div");
-            div.className = "flex " + (isUser ? "justify-end" : "justify-start");
-            div.innerHTML = `<div class="${isUser ? "bg-green-500/10 border border-green-500/20 text-white" : "bg-zinc-900 border border-white/5 text-zinc-300"} squircle-lg p-3 max-w-[85%] text-xs leading-relaxed whitespace-pre-wrap">${text}</div>`;
-            container.appendChild(div);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function appendAITyping() {
-            const container = document.getElementById("aiChatMessages");
-            const div = document.createElement("div");
-            div.id = "aiTypingIndicator"; div.className = "flex justify-start";
-            div.innerHTML = `<div class="bg-zinc-900 border border-white/5 squircle-lg p-3 text-zinc-500 text-xs">يفكر...</div>`;
-            container.appendChild(div); container.scrollTop = container.scrollHeight;
-        }
-
-        function removeAITyping() { const el = document.getElementById("aiTypingIndicator"); if (el) el.remove(); }
-
-        async function sendAIMessage() {
-            const text = document.getElementById("aiTextInput").value.trim();
-            if (!text && !aiSelectedImage) return;
-            const btn = document.getElementById("aiSendBtn");
-            btn.disabled = true; btn.classList.add("opacity-50");
-
-            if (aiSelectedImage) {
-                const container = document.getElementById("aiChatMessages");
-                const div = document.createElement("div");
-                div.className = "flex justify-end";
-                div.innerHTML = `<div class="bg-green-500/10 border border-green-500/20 squircle-lg p-2 max-w-[85%]"><img src="${aiSelectedImage}" class="w-32 h-32 object-cover squircle-md">${text ? `<p class="text-xs text-white mt-1">${text}</p>` : ""}</div>`;
-                container.appendChild(div); container.scrollTop = container.scrollHeight;
-            } else { appendAIMessage(text, true); }
-
-            document.getElementById("aiTextInput").value = "";
-            document.getElementById("aiTextInput").style.height = "auto";
-            removeAIImage();
-            appendAITyping();
-
-            try {
-                const prompt = text
-                    ? `أنت مساعد متخصص في حساب الكربوهيدرات لمرضى السكري. السؤال: "${text}". ${aiSelectedImage ? "انظر للصورة." : ""} أجب بشكل مختصر بالعربي، اذكر الكارب بالغرام للحصة الواحدة.`
-                    : `أنت مساعد متخصص في حساب الكربوهيدرات لمرضى السكري. انظر للصورة وحدد الأكل واحسب الكارب التقريبي بشكل مختصر بالعربي.`;
-
-                const messages = [
-                    { role: "system", content: "أنت مساعد متخصص في حساب الكربوهيدرات لمرضى السكري. أجب بشكل مختصر وواضح بالعربي." }
-                ];
-                if (aiSelectedImage) {
-                    const base64 = aiSelectedImage.split(",")[1];
-                    const mime = aiSelectedImage.split(";")[0].split(":")[1];
-                    messages.push({ role: "user", content: [
-                        { type: "image_url", image_url: { url: `data:${mime};base64,${base64}` } },
-                        { type: "text", text: prompt }
-                    ]});
-                } else {
-                    messages.push({ role: "user", content: prompt });
-                }
-
-                const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${GROQ_KEY}` },
-                    body: JSON.stringify({ model: "meta-llama/llama-4-scout-17b-16e-instruct", messages, max_tokens: 500 })
-                });
-                const data = await res.json();
-                removeAITyping();
-                if (data?.choices?.[0]?.message?.content) {
-                    appendAIMessage(data.choices[0].message.content, false);
-                } else { appendAIMessage("عذراً، ما قدرت أحصل على إجابة. حاول مرة ثانية.", false); }
-            } catch (e) {
-                removeAITyping();
-                appendAIMessage("فشل الاتصال، تأكد من الإنترنت وحاول مرة ثانية.", false);
-            }
-            btn.disabled = false; btn.classList.remove("opacity-50");
-            aiSelectedImage = null;
-        }
-    </script>
-
-
-
-<iframe style="display: none;"></iframe><iframe src="https://s-gke-usc1-nssi4-48.firebaseio.com/.lp?dframe=t&amp;id=17189&amp;pw=Q72nCaNWG7&amp;ns=carb-sa-default-rtdb" style="display: none;"></iframe></body></html>
