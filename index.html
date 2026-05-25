@@ -40,14 +40,14 @@
         .squircle-lg { border-radius: 18px; }
         .squircle-md { border-radius: 12px; }
         
-        /* تأثير التعليق والضغط الملموس هيدروليكياً */
+        /* تأثير الضغط الملموس المطور */
         .btn-interactive {
-            transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s ease, box-shadow 0.25s ease;
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s ease, box-shadow 0.25s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             will-change: transform, box-shadow;
         }
         .btn-interactive:active {
-            transform: scale(0.93) translateY(2px);
+            transform: scale(0.94) translateY(1px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
@@ -60,15 +60,13 @@
             will-change: transform;
         }
         .snack-card:active { 
-            transform: scale(0.95) translateY(1px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+            transform: scale(0.96) translateY(1px);
         }
         .selected-card { 
             background: rgba(34, 197, 94, 0.03) !important; 
             border: 1px solid rgba(34, 197, 94, 0.3) !important; 
         }
         
-        /* الكبسولات النشطة */
         .capsule-active { 
             color: #ffffff !important; 
             font-weight: 700 !important;
@@ -86,14 +84,48 @@
         header, footer { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; }
         .header-hidden { transform: translateY(-100%); opacity: 0; }
         .footer-hidden { transform: translateY(100%); opacity: 0; }
+
+        /* ستايل التنبيهات المخصصة */
+        #toastContainer {
+            position: fixed;
+            bottom: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-col: column;
+            gap: 8px;
+            width: calc(100% - 32px);
+            max-w: 380px;
+            pointer-events: none;
+        }
+        .toast-item {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
+            border-radius: 14px;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: right;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            animation: toastIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        @keyframes toastIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
 <body class="select-none pb-48">
 
-    <div id="sectionWelcomeScreen" class="fixed inset-0 z-[500] bg-[#050505] flex flex-col justify-center px-6 max-w-md mx-auto pointer-events-auto">
+    <div id="toastContainer"></div>
+
+    <div id="sectionWelcomeScreen" class="fixed inset-0 z-[500] bg-[#050505] flex flex-col justify-center px-6 max-w-md mx-auto">
         <div class="text-center mb-10 select-none">
             <h2 class="text-3xl font-bold text-white tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">Carbs sa</h2>
-            <p class="text-[10px] text-green-500 font-bold uppercase tracking-widest mt-1.5">Dosage Pro Edition</p>
+            <p id="adminSecretTrigger" class="text-[10px] text-green-500 font-bold uppercase tracking-widest mt-1.5 cursor-pointer p-2 inline-block rounded active:bg-white/5 transition-all">Dosage Pro Edition</p>
         </div>
         <div class="flex flex-col gap-5 relative z-[510]">
             <button onclick="enterAppSection('snacks')" style="-webkit-tap-highlight-color:transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center btn-interactive shadow-2xl py-8 outline-none cursor-pointer">
@@ -107,6 +139,7 @@
                 <p class="text-xs text-zinc-400 mt-1 pointer-events-none">الوجبات السريعة، الكافيهات والمطاعم...</p>
             </button>
         </div>
+        <p class="text-[9px] text-zinc-600 text-center mt-12 px-4 leading-relaxed">⚠️ إخلاء مسؤولية: هذا التطبيق أداة حسابية مساعدة وإرشادية فقط تعتمد على قيم تقريبية للكربوهيدرات، ولا يعتبر بديلاً عن الاستشارة الطبية المتخصصة.</p>
     </div>
 
     <div id="appMainContent" class="relative z-10" style="display: none;">
@@ -121,12 +154,12 @@
                     <div class="flex items-center gap-2">
                         <button onclick="openFeedbackModal()" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm btn-interactive">📣</button>
                         <div class="flex items-center bg-zinc-900 px-2.5 py-1 squircle-md border border-white/5 gap-2.5">
-                            <button onclick="changeRatio(-1)" class="text-green-500 font-bold text-lg px-1 btn-interactive">-</button>
+                            <button onclick="triggerRatioChange(-1)" class="text-green-500 font-bold text-lg px-1 btn-interactive">-</button>
                             <div class="text-center min-w-[36px] flex flex-col items-center justify-center relative">
                                 <span onclick="showRatioExplanation()" class="text-[8px] text-zinc-400 font-bold uppercase cursor-pointer pb-0.5">RATIO</span>
                                 <span class="font-bold text-white text-xs tracking-tight" id="ratioValue">10</span>
                             </div>
-                            <button onclick="changeRatio(1)" class="text-green-500 font-bold text-lg px-1 btn-interactive">+</button>
+                            <button onclick="triggerRatioChange(1)" class="text-green-500 font-bold text-lg px-1 btn-interactive">+</button>
                         </div>
                         <div id="adminAddZone" class="hidden flex items-center"><button onclick="openAddModal()" class="w-9 h-9 bg-green-500 text-black squircle-md flex items-center justify-center font-bold text-xl btn-interactive">+</button></div>
                     </div>
@@ -144,7 +177,6 @@
                 
                 <div class="flex gap-2 w-full relative">
                     <button id="showCapsuleBarBtn" onclick="toggleCapsuleBarVisibility(true)" class="h-10 px-3 bg-zinc-900 border border-white/10 rounded-full text-green-500 font-bold text-xs btn-interactive hidden items-center justify-center">☰ القوائم</button>
-                    
                     <button id="restaurantBackBtn" onclick="resetRestaurantBrandFilter()" class="h-10 px-4 bg-zinc-900 text-zinc-400 text-xs font-bold rounded-full border border-white/10 btn-interactive hidden items-center justify-center gap-1">↩ كل المطاعم</button>
                     <input type="text" id="searchInput" oninput="render()" placeholder="ابحث عن منتجك المفضل..." class="flex-1 p-2.5 rounded-full bg-zinc-900 text-right outline-none border border-white/5 text-xs text-white placeholder-zinc-500">
                 </div>
@@ -182,7 +214,7 @@
                 <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover brightness-[0.4]" alt="وجبات عامة">
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
                     <span class="text-base font-bold text-white tracking-wide shadow-sm">وجبات عامة أخرى</span>
-                    <span class="text-[9px] text-zinc-400 mt-0.5">وزنات "الحياة حلوة" وأخرى</span>
+                    <span class="text-[9px] text-zinc-400 mt-0.5">وزنات متنوعة وأخرى</span>
                 </div>
             </button>
         </div>
@@ -305,11 +337,23 @@
             </div>
         </div>
 
+        <div id="customConfirmModal" class="fixed inset-0 z-[600] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+            <div class="w-full max-w-xs bg-[#121212] border border-white/10 rounded-2xl p-5 text-center shadow-2xl modal-animate">
+                <div class="text-2xl mb-2" id="confirmIcon">⚠️</div>
+                <h3 class="text-sm font-bold text-white mb-2" id="confirmTitle">هل أنت متأكد؟</h3>
+                <p class="text-xs text-zinc-400 mb-5 leading-relaxed" id="confirmMessage">لا يمكن التراجع عن هذا الإجراء.</p>
+                <div class="flex gap-2">
+                    <button id="confirmCancelBtn" class="flex-1 py-2.5 bg-zinc-900 text-zinc-400 text-xs font-bold rounded-lg btn-interactive">إلغاء</button>
+                    <button id="confirmSuccessBtn" class="flex-1 py-2.5 bg-green-500 text-black text-xs font-bold rounded-lg btn-interactive">تأكيد</button>
+                </div>
+            </div>
+        </div>
+
         <footer id="mainFooter" class="fixed bottom-0 inset-x-0 z-30">
             <div class="max-w-md mx-auto p-4">
                 <div class="glass squircle-xl p-5 flex justify-between items-center text-white shadow-[0_25px_60px_rgba(0,0,0,0.95)] border border-white/10">
                     <div class="text-right flex flex-col">
-                        <p class="text-[9px] text-zinc-400 font-bold mb-1 uppercase tracking-widest flex items-center gap-2">إجمالي الكارب <button onclick="clearAllSelectedItems()" class="w-5 h-5 bg-zinc-900/80 text-red-400 rounded flex items-center justify-center text-[10px] btn-interactive">🧹</button></p>
+                        <p class="text-[9px] text-zinc-400 font-bold mb-1 uppercase tracking-widest flex items-center gap-2">إجمالي الكارب <button onclick="triggerClearAll()" class="w-5 h-5 bg-zinc-900/80 text-red-400 rounded flex items-center justify-center text-[10px] btn-interactive">🧹</button></p>
                         <div class="flex items-baseline gap-1"><span class="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300" id="totalCarbs">0.0</span><span class="text-[9px] text-zinc-500 font-bold">G</span></div>
                     </div>
                     <div class="h-10 w-[1px] bg-white/10 mx-2"></div>
@@ -318,6 +362,7 @@
                         <div class="flex items-center justify-center gap-1"><span class="text-4xl font-bold text-green-400 tracking-tight" id="insulinDose">0.0</span><span class="text-[9px] text-green-700 font-bold mt-2.5">Unit</span></div>
                     </div>
                 </div>
+                <p class="text-[8px] text-zinc-600 text-center mt-2">جرعة استرشادية تقريبية. يرجى اتباع توجيهات طبيبك دوماً.</p>
             </div>
         </footer>
     </div>
@@ -348,21 +393,69 @@
 
         const categoryTranslations = { all: 'الكل', chips: 'شبسات', chocolate: 'شكولاتات', biscuits: 'بسكويتات', icecream: 'آيسكريم', cake: 'كيك', sweets: 'حلويات', maamoul: 'معمول', restaurants: 'مطاعم' };
 
-        function getSavedAdminKey() { return sessionStorage.getItem("admin_session_token") || ""; }
+        // نظام التنبيهات Toast الداخلي
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast-item`;
+            toast.innerHTML = `<span>${type === 'success' ? '✅' : '⚠️'}</span> <span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        // نظام الـ Modals البديل لـ Confirm
+        function showCustomConfirm(title, message, icon, onSuccess) {
+            const modal = document.getElementById('customConfirmModal');
+            document.getElementById('confirmTitle').innerText = title;
+            document.getElementById('confirmMessage').innerText = message;
+            document.getElementById('confirmIcon').innerText = icon;
+            modal.style.display = 'flex';
+            
+            document.getElementById('confirmSuccessBtn').onclick = function() {
+                modal.style.display = 'none';
+                onSuccess();
+            };
+            document.getElementById('confirmCancelBtn').onclick = function() {
+                modal.style.display = 'none';
+            };
+        }
+
+        function getSavedAdminKey() { return localStorage.getItem("dosage_admin_token") || ""; }
         function isAdmin() { return getSavedAdminKey().length > 0; }
 
-        (function checkAdminKey() {
-            const urlKey = new URLSearchParams(window.location.search).get('key') || '';
-            if (!urlKey) return;
-            db.ref('admin_secret_key').once('value', snapshot => {
-                const storedKey = snapshot.val();
-                if (storedKey && urlKey === storedKey) {
-                    sessionStorage.setItem("admin_session_token", urlKey);
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                    injectAdminUI();
+        // إدخال زر الإدارة بالضغط المطول (3 ثوانٍ) لمنع العبث بالرابط
+        let adminTimer;
+        const triggerBtn = document.getElementById('adminSecretTrigger');
+        
+        triggerBtn.addEventListener('mousedown', startAdminTimer);
+        triggerBtn.addEventListener('touchstart', startAdminTimer);
+        triggerBtn.addEventListener('mouseup', clearAdminTimer);
+        triggerBtn.addEventListener('mouseleave', clearAdminTimer);
+        triggerBtn.addEventListener('touchend', clearAdminTimer);
+
+        function startAdminTimer() {
+            adminTimer = setTimeout(() => {
+                const pass = prompt("الرجاء إدخال رمز التحقق للإدارة:");
+                if(pass) {
+                    db.ref('admin_secret_key').once('value', snapshot => {
+                        if(snapshot.val() && pass === snapshot.val()) {
+                            localStorage.setItem("dosage_admin_token", pass);
+                            showToast("مرحباً بك يا مدير، تم تفعيل الصلاحيات!");
+                            injectAdminUI();
+                        } else {
+                            showToast("الرمز المدخل غير صحيح", "error");
+                        }
+                    });
                 }
-            });
-        })();
+            }, 3000); // 3 ثوانٍ ضغط مطول
+        }
+        function clearAdminTimer() { clearTimeout(adminTimer); }
+
+        if (isAdmin()) { setTimeout(() => injectAdminUI(), 500); }
 
         let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
@@ -462,7 +555,7 @@
         }
 
         function showRatioExplanation() {
-            alert("ℹ️ معامل الكربوهيدرات (Ratio):\nيمثل كمية غرامات الكربوهيدرات التي تغطيها وحدة أنسولين واحدة.");
+            showToast("ℹ️ معامل الكربوهيدرات (Ratio): غرامات الكارب التي تغطيها وحدة أنسولين واحدة.");
         }
 
         function injectAdminUI() {
@@ -472,11 +565,14 @@
             listenToFeedbacksLive();
         }
 
-        function changeRatio(val) {
-            ratio = Math.max(1, ratio + val);
-            document.getElementById('ratioValue').innerText = ratio;
-            localStorage.setItem('dosage_pro_ratio', ratio.toString());
-            updateStats();
+        function triggerRatioChange(val) {
+            showCustomConfirm("تعديل معامل الـ Ratio", `هل تريد بالفعل تعديل قيمة المعامل بمقدار ${val}؟ هذا سيغير حساب الجرعة فوراً.`, "📈", () => {
+                ratio = Math.max(1, ratio + val);
+                document.getElementById('ratioValue').innerText = ratio;
+                localStorage.setItem('dosage_pro_ratio', ratio.toString());
+                updateStats();
+                showToast("تم تحديث الـ Ratio بنجاح");
+            });
         }
 
         function buildInlineCapsulesMenu() {
@@ -620,13 +716,14 @@
             document.getElementById('insulinDose').innerText = dose === 0 ? "0.0" : dose.toFixed(1);
         }
 
-        function clearAllSelectedItems() {
+        function triggerClearAll() {
             if (Object.keys(selectedItemsMap).length === 0) return;
-            if (confirm("هل تريد مسح جميع المنتجات المحددة وتصفير الحسبة؟")) {
+            showCustomConfirm("تصفير الحسبة", "هل تريد مسح جميع المنتجات المحددة وتفريغ القائمة بالكامل؟", "🧹", () => {
                 selectedItemsMap = {};
                 localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
                 updateStats(); render();
-            }
+                showToast("تم تصفير الحسبة");
+            });
         }
 
         function triggerEditFromDetails() {
@@ -647,7 +744,7 @@
 
         function deleteProductFromFirebase() {
             if (!isAdmin() || !activeDetailsId) return;
-            if (confirm("حذف نهائي للمنتج؟")) {
+            showCustomConfirm("حذف المنتج", "هل أنت متأكد من حذف هذا المنتج نهائياً من قاعدة البيانات؟", "🗑️", () => {
                 const idToDelete = activeDetailsId;
                 closeModal('detailsModal');
                 fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${idToDelete}.json?auth=${getSavedAdminKey()}`, { method: 'DELETE' })
@@ -656,8 +753,9 @@
                     delete selectedItemsMap[idToDelete];
                     localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
                     updateStats();
-                }).catch(() => alert("فشلت العملية: تم رفض الصلاحيات."));
-            }
+                    showToast("تم الحذف بنجاح");
+                }).catch(() => showToast("فشلت العملية: تم رفض الصلاحيات", "error"));
+            });
         }
 
         function openAddModal() { if (isAdmin()) document.getElementById('addModal').style.display = 'flex'; }
@@ -676,12 +774,15 @@
             const carbs = parseFloat(document.getElementById('editCarbs').value) || 0;
             const cal = parseInt(document.getElementById('editCal').value) || 0;
             const img = document.getElementById('editImg').value.trim();
-            if (!name || carbs <= 0) { alert('تأكد من البيانات'); return; }
+            if (!name || carbs <= 0) { showToast('تأكد من إدخال البيانات بشكل صحيح', 'error'); return; }
             
             fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${id}.json?auth=${getSavedAdminKey()}`, {
                 method: 'PUT', body: JSON.stringify({ id, name, carbs, cal, weight, type, img, brand, info })
-            }).then(res => { if (!res.ok) throw new Error(); closeModal('editModal'); })
-            .catch(() => alert("فشلت العملية: الرمز غير صحيح."));
+            }).then(res => { 
+                if (!res.ok) throw new Error(); 
+                closeModal('editModal');
+                showToast("تم حفظ التعديلات بنجاح");
+            }).catch(() => showToast("فشلت العملية: الرمز غير صحيح.", "error"));
         }
 
         function addNewSnack() {
@@ -694,8 +795,10 @@
             const carbs = parseFloat(document.getElementById('newCarbs').value) || 0;
             const cal = parseInt(document.getElementById('newCal').value) || 0;
             const img = document.getElementById('newImg').value.trim();
-            if (!name || carbs <= 0) { alert('تأكد من البيانات'); return; }
-            const newId = Date.now();
+            if (!name || carbs <= 0) { showToast('تأكد من صحة البيانات والمقادير', 'error'); return; }
+            
+            // حل مشكلة تضارب المعرفات بدمج الوقت برقم عشوائي لضمان استحالة التكرار
+            const newId = Date.now() + Math.floor(Math.random() * 1000);
             
             fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${newId}.json?auth=${getSavedAdminKey()}`, {
                 method: 'PUT', body: JSON.stringify({ id: newId, name, carbs, cal, weight, type, img, brand, info })
@@ -703,14 +806,19 @@
                 if (!res.ok) throw new Error();
                 ['newName','newWeight','newCarbs','newCal','newImg','newInfo'].forEach(id => document.getElementById(id).value = '');
                 closeModal('addModal');
-            }).catch(() => alert("فشلت العملية: تم رفض الطلب."));
+                showToast("تم إضافة المنتج الجديد");
+            }).catch(() => showToast("فشلت العملية: تم رفض الطلب.", "error"));
         }
 
         function sendFeedbackToFirebase() {
             const text = document.getElementById('feedbackText').value.trim(); if (!text) return;
-            const feedbackId = Date.now();
+            const feedbackId = Date.now() + Math.floor(Math.random() * 100);
             db.ref('feedbacks/' + feedbackId).set({ id: feedbackId, message: text, time: new Date().toLocaleString('ar-SA') })
-            .then(() => { alert('تم الإرسال بنجاح ❤️'); document.getElementById('feedbackText').value = ''; closeModal('feedbackModal'); });
+            .then(() => { 
+                showToast('تم إرسال مقترحك بنجاح ❤️'); 
+                document.getElementById('feedbackText').value = ''; 
+                closeModal('feedbackModal'); 
+            });
         }
 
         function listenToFeedbacksLive() {
@@ -733,9 +841,11 @@
             const blob = new Blob(["<!DOCTYPE html>\n" + document.documentElement.outerHTML], { type: "text/html" });
             const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "index.html";
             document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            showToast("تم تصدير ملف النسخة الاحتياطية بنجاح");
         }
 
         document.getElementById('ratioValue').innerText = ratio;
     </script>
 </body>
 </html>
+
