@@ -40,7 +40,6 @@
         .squircle-lg { border-radius: 18px; }
         .squircle-md { border-radius: 12px; }
         
-        /* تأثير الضغط الملموس المطور */
         .btn-interactive {
             transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s ease, box-shadow 0.25s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -66,6 +65,10 @@
             background: rgba(34, 197, 94, 0.03) !important; 
             border: 1px solid rgba(34, 197, 94, 0.3) !important; 
         }
+        .pinned-card {
+            border: 1px solid rgba(234, 179, 8, 0.2) !important;
+            background: rgba(234, 179, 8, 0.02);
+        }
         
         .capsule-active { 
             color: #ffffff !important; 
@@ -85,18 +88,17 @@
         .header-hidden { transform: translateY(-100%); opacity: 0; }
         .footer-hidden { transform: translateY(100%); opacity: 0; }
 
-        /* ستايل التنبيهات المخصصة */
         #toastContainer {
             position: fixed;
-            bottom: 110px;
+            bottom: 180px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
             display: flex;
-            flex-col: column;
+            flex-direction: column;
             gap: 8px;
             width: calc(100% - 32px);
-            max-w: 380px;
+            max-width: 380px;
             pointer-events: none;
         }
         .toast-item {
@@ -118,14 +120,14 @@
         @keyframes toastIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
-<body class="select-none pb-48">
+<body class="select-none pb-72">
 
     <div id="toastContainer"></div>
 
     <div id="sectionWelcomeScreen" class="fixed inset-0 z-[500] bg-[#050505] flex flex-col justify-center px-6 max-w-md mx-auto">
         <div class="text-center mb-10 select-none">
-            <h2 class="text-3xl font-bold text-white tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">Carbs sa</h2>
-            <p id="adminSecretTrigger" class="text-[10px] text-green-500 font-bold uppercase tracking-widest mt-1.5 cursor-pointer p-2 inline-block rounded active:bg-white/5 transition-all">Dosage Pro Edition</p>
+            <h2 id="adminSecretTrigger" class="text-3xl font-bold text-white tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400 cursor-pointer active:scale-95 transition-transform p-2 inline-block">Carbs sa</h2>
+            <p class="text-[10px] text-green-500 font-bold uppercase tracking-widest mt-1.5">Dosage Pro Edition</p>
         </div>
         <div class="flex flex-col gap-5 relative z-[510]">
             <button onclick="enterAppSection('snacks')" style="-webkit-tap-highlight-color:transparent;" class="glass squircle-xl p-6 flex flex-col items-center justify-center text-center btn-interactive shadow-2xl py-8 outline-none cursor-pointer">
@@ -151,16 +153,11 @@
                         <div id="adminBackupZone" class="hidden flex items-center"><button onclick="exportCurrentCodeToHTML()" class="w-9 h-9 bg-zinc-900 border border-white/10 squircle-md flex items-center justify-center text-sm btn-interactive ml-1">💾</button></div>
                         <h1 class="text-lg font-bold text-white tracking-tight">Carbs sa</h1>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="openFeedbackModal()" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm btn-interactive">📣</button>
-                        <div class="flex items-center bg-zinc-900 px-2.5 py-1 squircle-md border border-white/5 gap-2.5">
-                            <button onclick="triggerRatioChange(-1)" class="text-green-500 font-bold text-lg px-1 btn-interactive">-</button>
-                            <div class="text-center min-w-[36px] flex flex-col items-center justify-center relative">
-                                <span onclick="showRatioExplanation()" class="text-[8px] text-zinc-400 font-bold uppercase cursor-pointer pb-0.5">RATIO</span>
-                                <span class="font-bold text-white text-xs tracking-tight" id="ratioValue">10</span>
-                            </div>
-                            <button onclick="triggerRatioChange(1)" class="text-green-500 font-bold text-lg px-1 btn-interactive">+</button>
-                        </div>
+                    <div class="flex items-center gap-1.5">
+                        <button onclick="openCompareModal()" title="المقارنة" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm btn-interactive">⚖️</button>
+                        <button onclick="openHistoryModal()" title="السجل" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm btn-interactive">🕒</button>
+                        <button onclick="openSettingsModal()" title="الإعدادات" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm btn-interactive">⚙️</button>
+                        <button onclick="openFeedbackModal()" title="المقترحات" class="w-9 h-9 bg-zinc-900 border border-white/5 squircle-md flex items-center justify-center text-sm btn-interactive">📣</button>
                         <div id="adminAddZone" class="hidden flex items-center"><button onclick="openAddModal()" class="w-9 h-9 bg-green-500 text-black squircle-md flex items-center justify-center font-bold text-xl btn-interactive">+</button></div>
                     </div>
                 </div>
@@ -221,15 +218,15 @@
 
         <main id="snackList" class="max-w-md mx-auto flex flex-col px-4 mt-3"></main>
 
-        <div id="detailsModal" class="fixed inset-0 z-50 bg-[#030303] hidden flex-col overflow-y-auto no-scrollbar">
-            <div class="w-full max-w-md mx-auto flex flex-col relative min-h-screen pb-12">
+        <div id="detailsModal" class="fixed inset-0 z-50 bg-[#030303] hidden flex-col overflow-y-auto no-scrollbar pb-32">
+            <div class="w-full max-w-md mx-auto flex flex-col relative min-h-screen">
                 <div class="w-full h-56 bg-zinc-950 relative overflow-hidden flex items-center justify-center border-b border-white/5 p-6 mt-2">
                     <img id="detImgView" src="" class="max-w-full max-h-full object-contain squircle-lg" onerror="this.src='https://placehold.co/400x300/141414/666?text=No+Image'">
                     <button onclick="closeModal('detailsModal')" class="absolute top-4 left-4 w-9 h-9 flex items-center justify-center bg-zinc-900/80 backdrop-blur-md rounded-full border border-white/10 text-white btn-interactive">✕</button>
                 </div>
-                <div class="flex-1 px-6 flex flex-col justify-between pt-5">
+                <div class="flex-1 px-6 flex flex-col pt-5">
                     <div class="text-right">
-                        <h2 id="detName" class="text-xl font-bold text-white mb-2">--</h2>
+                        <h2 id="detName" class="text-xl font-bold text-white mb-4">--</h2>
                         
                         <div id="detInfoZone" class="mb-4 bg-green-950/20 p-3.5 squircle-lg border border-green-500/20 hidden">
                             <span class="text-[10px] text-green-400 font-bold block mb-1">💡 معلومات إضافية / المصدر:</span>
@@ -238,10 +235,10 @@
 
                         <div class="mb-5 bg-zinc-900/40 p-4 squircle-lg border border-white/5 flex flex-col gap-2.5">
                             <label class="text-[10px] text-zinc-400 block font-bold uppercase">عدد العبوات المتناولة:</label>
-                            <div class="flex items-center justify-between bg-black/40 p-1.5 squircle-md border border-white/5 max-w-[240px] mx-auto w-full">
-                                <button onclick="adjustMultiplierStep(-0.25)" class="w-10 h-10 bg-zinc-900 rounded-xl text-zinc-300 font-bold text-lg btn-interactive">-</button>
+                            <div class="flex items-center justify-between bg-black/40 p-1.5 squircle-md border border-white/5 max-w-[240px] mx-auto w-full" dir="ltr">
+                                <button onclick="adjustMultiplierStep(-0.25)" class="w-12 h-11 bg-zinc-900 rounded-xl text-zinc-300 font-bold text-xl btn-interactive">-</button>
                                 <input type="number" id="customMultiplierInput" step="0.01" min="0.01" class="w-20 text-center font-bold text-base bg-transparent text-white outline-none" oninput="handleManualMultiplierInput(this.value)">
-                                <button onclick="adjustMultiplierStep(0.25)" class="w-10 h-10 bg-zinc-900 rounded-xl text-green-500 font-bold text-lg btn-interactive">+</button>
+                                <button onclick="adjustMultiplierStep(0.25)" class="w-12 h-11 bg-zinc-900 rounded-xl text-green-500 font-bold text-xl btn-interactive">+</button>
                             </div>
                         </div>
                         <div class="flex flex-col border-t border-white/5 mb-6">
@@ -252,11 +249,78 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-3 mt-auto">
-                        <button onclick="toggleSelectFromDetails()" id="detAddBtn" class="w-full py-4 bg-green-500 text-black squircle-lg font-bold text-sm btn-interactive shadow-lg">＋ إضافة المنتج للإجمالي</button>
-                        <div id="adminActionsZone" class="flex flex-col gap-3"></div>
-                    </div>
                 </div>
+            </div>
+            
+            <div class="fixed bottom-0 inset-x-0 bg-black/95 backdrop-blur-lg border-t border-white/10 p-4 z-50">
+                <div class="max-w-md mx-auto flex flex-col gap-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="toggleCompareItemFromDetails()" id="detCompareBtn" class="py-3.5 bg-zinc-900 border border-white/10 text-zinc-300 rounded-xl font-bold text-xs btn-interactive flex items-center justify-center gap-1.5">⚖️ إضافة للمقارنة</button>
+                        <button onclick="toggleSelectFromDetails()" id="detAddBtn" class="py-3.5 bg-green-500 text-black squircle-lg font-bold text-xs btn-interactive shadow-lg flex items-center justify-center gap-1.5">＋ إضافة للمقادير</button>
+                    </div>
+                    <div id="adminActionsZone" class="flex flex-col gap-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-end justify-center p-4">
+            <div class="w-full max-w-md bg-[#0d0d0d] rounded-t-[2rem] border border-white/10 p-6 modal-animate max-h-[85vh] overflow-y-auto no-scrollbar text-right">
+                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3">
+                    <button onclick="closeModal('settingsModal')" class="text-zinc-500 text-lg font-bold btn-interactive">✕</button>
+                    <h2 class="text-sm font-bold text-white">⚙️ إعدادات حساب الجرعات</h2>
+                </div>
+                <div class="flex flex-col gap-5">
+                    <div class="bg-zinc-900/50 p-4 rounded-xl border border-white/5">
+                        <label class="text-xs font-bold text-zinc-300 block mb-2">معامل الكربوهيدرات الكلي (Ratio):</label>
+                        <div class="flex items-center justify-between bg-black/40 p-1 rounded-lg border border-white/5 max-w-[200px]">
+                            <button onclick="changeRatioSettings(-1)" class="w-9 h-9 bg-zinc-900 rounded-lg text-white font-bold text-base btn-interactive">-</button>
+                            <span id="settingsRatioValue" class="text-base font-bold text-green-400">10</span>
+                            <button onclick="changeRatioSettings(1)" class="w-9 h-9 bg-zinc-900 rounded-lg text-white font-bold text-base btn-interactive">+</button>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 mt-1">كمية غرامات الكربوهيدرات التي تغطيها وحدة إنسولين واحدة.</p>
+                    </div>
+
+                    <div class="bg-zinc-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-white">تفعيل حساب جرعة التصحيح (اختياري)</span>
+                            <input type="checkbox" id="correctionToggle" onchange="toggleCorrectionUI(this.checked)" class="w-4 h-4 accent-green-500">
+                        </div>
+                        <div id="correctionFields" class="hidden flex flex-col gap-3 border-t border-white/5 pt-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-[10px] text-zinc-400 block mb-1">السكر المستهدف (Target):</label>
+                                    <input type="number" id="targetSugarInput" class="w-full p-2.5 rounded-lg border border-white/5 text-xs text-center">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] text-zinc-400 block mb-1">عامل الحساسية (ISF):</label>
+                                    <input type="number" id="isfInput" class="w-full p-2.5 rounded-lg border border-white/5 text-xs text-center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="saveSettings()" class="w-full py-3 bg-green-500 text-black font-bold text-xs rounded-xl btn-interactive shadow-lg mt-2">💾 حفظ الإعدادات</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="historyModal" class="fixed inset-0 z-50 bg-[#050505] hidden flex-col overflow-y-auto no-scrollbar text-right">
+            <div class="w-full max-w-md mx-auto flex flex-col relative min-h-screen p-4 pb-12">
+                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3 mt-2">
+                    <button onclick="closeModal('historyModal')" class="w-8 h-8 flex items-center justify-center bg-zinc-900 border border-white/10 squircle-md text-zinc-400 text-xs font-bold btn-interactive">✕</button>
+                    <h2 class="text-sm font-bold text-white">🕒 سجل الوجبات المحفوظة</h2>
+                </div>
+                <div id="historyItemsContainer" class="flex flex-col gap-3"></div>
+            </div>
+        </div>
+
+        <div id="compareModal" class="fixed inset-0 z-50 bg-[#050505] hidden flex-col overflow-y-auto no-scrollbar text-right">
+            <div class="w-full max-w-md mx-auto flex flex-col relative min-h-screen p-4 pb-12">
+                <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-3 mt-2">
+                    <button onclick="closeModal('compareModal')" class="w-8 h-8 flex items-center justify-center bg-zinc-900 border border-white/10 squircle-md text-zinc-400 text-xs font-bold btn-interactive">✕</button>
+                    <h2 class="text-sm font-bold text-white">⚖️ مقارنة المنتجات السريعة</h2>
+                </div>
+                <div id="compareGrid" class="grid grid-cols-2 gap-4"></div>
+                <div id="comparePlaceholder" class="text-center text-zinc-600 text-xs py-20 hidden">اضغط على أي منتج واكتب "إضافة للمقارنة" لعرض الفروقات هنا</div>
             </div>
         </div>
 
@@ -350,21 +414,65 @@
         </div>
 
         <footer id="mainFooter" class="fixed bottom-0 inset-x-0 z-30">
-            <div class="max-w-md mx-auto p-4">
-                <div class="glass squircle-xl p-5 flex justify-between items-center text-white shadow-[0_25px_60px_rgba(0,0,0,0.95)] border border-white/10">
-                    <div class="text-right flex flex-col">
-                        <p class="text-[9px] text-zinc-400 font-bold mb-1 uppercase tracking-widest flex items-center gap-2">إجمالي الكارب <button onclick="triggerClearAll()" class="w-5 h-5 bg-zinc-900/80 text-red-400 rounded flex items-center justify-center text-[10px] btn-interactive">🧹</button></p>
-                        <div class="flex items-baseline gap-1"><span class="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300" id="totalCarbs">0.0</span><span class="text-[9px] text-zinc-500 font-bold">G</span></div>
-                    </div>
-                    <div class="h-10 w-[1px] bg-white/10 mx-2"></div>
-                    <div class="text-center flex flex-col items-center">
-                        <p class="text-[9px] text-green-400 font-bold mb-1 uppercase tracking-widest">الجرعة المقترحة</p>
-                        <div class="flex items-center justify-center gap-1"><span class="text-4xl font-bold text-green-400 tracking-tight" id="insulinDose">0.0</span><span class="text-[9px] text-green-700 font-bold mt-2.5">Unit</span></div>
-                    </div>
+            <div class="max-w-md mx-auto p-4 flex flex-col gap-2.5">
+                
+                <div id="footerCorrectionZone" class="glass rounded-xl p-3 border border-white/5 flex justify-between items-center hidden">
+                    <span class="text-xs font-bold text-zinc-400">🩸 قياس سكر الدم الحالي (mg/dL):</span>
+                    <input type="number" id="currentBloodSugarInput" oninput="updateStats()" placeholder="أدخل القياس" class="w-24 text-center p-1.5 rounded-lg bg-black border border-white/10 text-xs font-bold text-white">
                 </div>
-                <p class="text-[8px] text-zinc-600 text-center mt-2">جرعة استرشادية تقريبية. يرجى اتباع توجيهات طبيبك دوماً.</p>
+
+                <div class="glass squircle-xl p-4 flex flex-col gap-4 shadow-[0_25px_60px_rgba(0,0,0,0.95)] border border-white/10">
+                    
+                    <div class="flex justify-between items-center text-white">
+                        <div class="text-right flex flex-col">
+                            <p class="text-[9px] text-zinc-400 font-bold mb-0.5 uppercase tracking-widest">إجمالي الكارب الحالي</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300" id="totalCarbs">0.0</span>
+                                <span class="text-[9px] text-zinc-500 font-bold">G</span>
+                            </div>
+                        </div>
+                        <div class="h-8 w-[1px] bg-white/10 mx-2"></div>
+                        <div class="text-center flex flex-col items-center">
+                            <p class="text-[9px] text-green-400 font-bold mb-0.5 uppercase tracking-widest">الجرعة المقترحة الكلية</p>
+                            <div class="flex items-center justify-center gap-1">
+                                <span class="text-3xl font-bold text-green-400 tracking-tight" id="insulinDose">0.0</span>
+                                <span class="text-[9px] text-green-700 font-bold mt-2">Unit</span>
+                            </div>
+                            <span id="doseBreakdownText" class="text-[8px] text-zinc-500 block font-medium mt-0.5"></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2.5 border-t border-white/5 pt-3">
+                        <button onclick="shareMealViaWhatsApp()" class="py-3 bg-green-500 hover:bg-green-600 text-black rounded-xl font-bold text-xs btn-interactive flex flex-col items-center justify-center gap-1">
+                            <span class="text-sm">🚀</span>
+                            <span>إرسال واتساب</span>
+                        </button>
+                        <button onclick="saveCurrentMealToHistory()" class="py-3 bg-zinc-900 hover:bg-zinc-800 text-blue-400 rounded-xl font-bold text-xs border border-white/5 btn-interactive flex flex-col items-center justify-center gap-1">
+                            <span class="text-sm">💾</span>
+                            <span>حفظ الوجبة</span>
+                        </button>
+                        <button onclick="triggerClearAll()" class="py-3 bg-red-950/30 hover:bg-red-950/50 text-red-400 rounded-xl font-bold text-xs border border-red-900/20 btn-interactive flex flex-col items-center justify-center gap-1">
+                            <span class="text-sm">🧹</span>
+                            <span>تصفير الحسبة</span>
+                        </button>
+                    </div>
+
+                </div>
+                <p class="text-[8px] text-zinc-600 text-center mt-0.5">جرعة استرشادية تقريبية. يرجى اتباع توجيهات طبيبك دوماً.</p>
             </div>
         </footer>
+    </div>
+
+    <div id="adminLoginModal" class="fixed inset-0 z-[700] bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="w-full max-w-sm bg-[#0d0d0d] border border-white/10 rounded-2xl p-6 text-right shadow-2xl modal-animate">
+            <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">🔐 لوحة الإدارة السريّة</h3>
+            <p class="text-xs text-zinc-400 mb-4">الرجاء إدخال رمز التحقق للوصول لصلاحيات المدير والتعديلات.</p>
+            <input type="password" id="adminPasswordInput" placeholder="أدخل الرمز السري هنا..." class="w-full p-3 mb-4 squircle-md border border-white/5 outline-none text-center text-sm tracking-widest font-bold">
+            <div class="flex gap-2">
+                <button onclick="closeModal('adminLoginModal')" class="flex-1 py-3 bg-zinc-900 text-zinc-400 text-xs font-bold rounded-xl btn-interactive">إلغاء</button>
+                <button onclick="submitAdminPassword()" class="flex-1 py-3 bg-green-500 text-black text-xs font-bold rounded-xl btn-interactive">تحقق ودخول</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -387,13 +495,21 @@
         let currentCategory = 'all';
         let currentRestaurantBrand = 'all'; 
         let selectedItemsMap = JSON.parse(localStorage.getItem('dosage_pro_selected_map')) || {};
+        let pinnedItems = JSON.parse(localStorage.getItem('dosage_pro_pinned_items')) || [];
+        let compareItems = [];
+        
+        let correctionSettings = JSON.parse(localStorage.getItem('dosage_pro_correction_settings')) || {
+            enabled: false,
+            target: 100,
+            isf: 50
+        };
+
         let activeDetailsId = null;
         let activeMultiplier = 1;
         let activeAppSection = null;
 
         const categoryTranslations = { all: 'الكل', chips: 'شبسات', chocolate: 'شكولاتات', biscuits: 'بسكويتات', icecream: 'آيسكريم', cake: 'كيك', sweets: 'حلويات', maamoul: 'معمول', restaurants: 'مطاعم' };
 
-        // نظام التنبيهات Toast الداخلي
         function showToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
@@ -407,7 +523,6 @@
             }, 2500);
         }
 
-        // نظام الـ Modals البديل لـ Confirm
         function showCustomConfirm(title, message, icon, onSuccess) {
             const modal = document.getElementById('customConfirmModal');
             document.getElementById('confirmTitle').innerText = title;
@@ -424,38 +539,57 @@
             };
         }
 
-        function getSavedAdminKey() { return localStorage.getItem("dosage_admin_token") || ""; }
+        function getSavedAdminKey() { return sessionStorage.getItem("dosage_admin_token") || ""; }
         function isAdmin() { return getSavedAdminKey().length > 0; }
 
-        // إدخال زر الإدارة بالضغط المطول (3 ثوانٍ) لمنع العبث بالرابط
-        let adminTimer;
-        const triggerBtn = document.getElementById('adminSecretTrigger');
-        
-        triggerBtn.addEventListener('mousedown', startAdminTimer);
-        triggerBtn.addEventListener('touchstart', startAdminTimer);
-        triggerBtn.addEventListener('mouseup', clearAdminTimer);
-        triggerBtn.addEventListener('mouseleave', clearAdminTimer);
-        triggerBtn.addEventListener('touchend', clearAdminTimer);
-
-        function startAdminTimer() {
-            adminTimer = setTimeout(() => {
-                const pass = prompt("الرجاء إدخال رمز التحقق للإدارة:");
-                if(pass) {
-                    db.ref('admin_secret_key').once('value', snapshot => {
-                        if(snapshot.val() && pass === snapshot.val()) {
-                            localStorage.setItem("dosage_admin_token", pass);
-                            showToast("مرحباً بك يا مدير، تم تفعيل الصلاحيات!");
-                            injectAdminUI();
-                        } else {
-                            showToast("الرمز المدخل غير صحيح", "error");
-                        }
-                    });
-                }
-            }, 3000); // 3 ثوانٍ ضغط مطول
+        const triggerElement = document.getElementById('adminSecretTrigger');
+        if (triggerElement) {
+            triggerElement.addEventListener('dblclick', function() {
+                document.getElementById('adminPasswordInput').value = '';
+                document.getElementById('adminLoginModal').style.display = 'flex';
+            });
         }
-        function clearAdminTimer() { clearTimeout(adminTimer); }
+
+        function submitAdminPassword() {
+            const pass = document.getElementById('adminPasswordInput').value.trim();
+            if(pass) {
+                db.ref('admin_secret_key').once('value', snapshot => {
+                    if(snapshot.val() && pass === snapshot.val()) {
+                        sessionStorage.setItem("dosage_admin_token", pass);
+                        closeModal('adminLoginModal');
+                        showToast("مرحباً بك يا مدير، تم تفعيل الصلاحيات!");
+                        injectAdminUI();
+                        render();
+                    } else {
+                        showToast("الرمز المدخل غير صحيح", "error");
+                    }
+                });
+            }
+        }
 
         if (isAdmin()) { setTimeout(() => injectAdminUI(), 500); }
+
+        // دالة تصدير وتحميل الكود الكامل كنسخة احتياطية (HTML)
+        function exportCurrentCodeToHTML() {
+            if (!isAdmin()) {
+                showToast("غير مصرح لك بالتحميل", "error");
+                return;
+            }
+            try {
+                const fullHtml = document.documentElement.outerHTML;
+                const blob = new Blob([fullHtml], { type: "text/html;charset=utf-8" });
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = `Dosage_Pro_Backup_${Date.now()}.html`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showToast("تم تحميل النسخة الاحتياطية بنجاح! 💾");
+            } catch (err) {
+                showToast("فشل في تحميل النسخة الاحتياطية", "error");
+                console.error(err);
+            }
+        }
 
         let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
@@ -517,6 +651,7 @@
                 document.getElementById('showCapsuleBarBtn').style.display = 'none';
             }
             document.getElementById('searchInput').value = '';
+            applyCorrectionUIState();
             buildInlineCapsulesMenu();
             render();
             window.scrollTo(0, 0);
@@ -554,25 +689,11 @@
             document.getElementById('sectionWelcomeScreen').style.display = 'flex';
         }
 
-        function showRatioExplanation() {
-            showToast("ℹ️ معامل الكربوهيدرات (Ratio): غرامات الكارب التي تغطيها وحدة أنسولين واحدة.");
-        }
-
         function injectAdminUI() {
             document.getElementById('adminBackupZone').classList.remove('hidden');
             document.getElementById('adminAddZone').classList.remove('hidden');
             document.getElementById('adminFeedbackListZone').classList.remove('hidden');
-            listenToFeedbacksLive();
-        }
-
-        function triggerRatioChange(val) {
-            showCustomConfirm("تعديل معامل الـ Ratio", `هل تريد بالفعل تعديل قيمة المعامل بمقدار ${val}؟ هذا سيغير حساب الجرعة فوراً.`, "📈", () => {
-                ratio = Math.max(1, ratio + val);
-                document.getElementById('ratioValue').innerText = ratio;
-                localStorage.setItem('dosage_pro_ratio', ratio.toString());
-                updateStats();
-                showToast("تم تحديث الـ Ratio بنجاح");
-            });
+            if(typeof listenToFeedbacksLive === "function") { listenToFeedbacksLive(); }
         }
 
         function buildInlineCapsulesMenu() {
@@ -603,7 +724,7 @@
                 return;
             }
 
-            const filtered = snacks.filter(s => {
+            let filtered = snacks.filter(s => {
                 const matchesSearch = s.name.toLowerCase().includes(term);
                 if (activeAppSection === 'restaurants') {
                     if (term !== '') return s.type === 'restaurants' && matchesSearch;
@@ -613,6 +734,12 @@
                 return (currentCategory === 'all' || s.type === currentCategory) && matchesSearch;
             });
 
+            filtered.sort((a, b) => {
+                const aPinned = pinnedItems.includes(a.id) ? 1 : 0;
+                const bPinned = pinnedItems.includes(b.id) ? 1 : 0;
+                return bPinned - aPinned;
+            });
+
             if (filtered.length === 0) {
                 list.innerHTML = `<div class="text-center text-zinc-600 text-xs py-10">لا يوجد نتائج تطابق بحثك</div>`;
                 return;
@@ -620,21 +747,42 @@
 
             list.innerHTML = filtered.map(snack => {
                 const isSelected = snack.id in selectedItemsMap;
+                const isPinned = pinnedItems.includes(snack.id);
                 const qtyText = isSelected && selectedItemsMap[snack.id] !== 1 ? ` (×${selectedItemsMap[snack.id]})` : '';
                 return `
-                    <div onclick="openDetailsModal(${snack.id})" class="snack-card p-4 squircle-xl flex items-center justify-between gap-4 ${isSelected ? 'selected-card' : ''}">
+                    <div onclick="openDetailsModal(${snack.id})" class="snack-card p-4 squircle-xl flex items-center justify-between gap-4 ${isSelected ? 'selected-card' : ''} ${isPinned ? 'pinned-card' : ''}">
                         <div class="flex items-center gap-3 flex-1 min-w-0 text-right">
                             <div class="w-12 h-12 bg-zinc-950/40 squircle-sm overflow-hidden flex-shrink-0 flex items-center justify-center p-1 border border-white/5">
                                 <img src="${snack.img || 'https://placehold.co/100x100/141414/666?text=Snack'}" class="w-full h-full object-contain">
                             </div>
                             <div class="flex flex-col min-w-0">
-                                <span class="text-[10px] text-green-400 font-bold">${snack.weight || 'N/A'} • ${(snack.carbs || 0).toFixed(1)}G كارب</span>
+                                <span class="text-[10px] text-green-400 font-bold">
+                                    ${isPinned ? '📌 مثبت • ' : ''}${snack.weight || 'N/A'} • ${(snack.carbs || 0).toFixed(1)}G كارب
+                                </span>
                                 <h3 class="font-bold text-white text-[14px] truncate mt-0.5">${snack.name}${qtyText}</h3>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2 text-[10px] text-zinc-500 font-bold">${snack.cal || 0} 🔥</div>
+                        <div class="flex items-center gap-3">
+                            <span onclick="togglePinItem(event, ${snack.id})" class="text-sm cursor-pointer p-1 active:scale-90 transition-transform" title="تثبيت">
+                                ${isPinned ? '📌' : '📍'}
+                            </span>
+                            <div class="text-[10px] text-zinc-500 font-bold">${snack.cal || 0} 🔥</div>
+                        </div>
                     </div>`;
             }).join('');
+        }
+
+        function togglePinItem(event, id) {
+            event.stopPropagation(); 
+            if (pinnedItems.includes(id)) {
+                pinnedItems = pinnedItems.filter(pId => pId !== id);
+                showToast("تم إلغاء التثبيت");
+            } else {
+                pinnedItems.push(id);
+                showToast("تم تثبيت المنتج في الأعلى 📌");
+            }
+            localStorage.setItem('dosage_pro_pinned_items', JSON.stringify(pinnedItems));
+            render();
         }
 
         function openDetailsModal(id) {
@@ -655,9 +803,12 @@
                 infoZone.classList.add('hidden');
             }
 
+            const isCompared = compareItems.includes(id);
+            document.getElementById('detCompareBtn').innerText = isCompared ? "⚖️ إزالة من المقارنة" : "⚖️ إضافة للمقارنة";
+
             document.getElementById('adminActionsZone').innerHTML = isAdmin() ? `
-                <button onclick="triggerEditFromDetails()" class="w-full py-4 bg-zinc-900 border border-white/5 squircle-lg flex items-center justify-center gap-2 text-sm text-white font-bold btn-interactive">✏️ تعديل بيانات المنتج</button>
-                <button onclick="deleteProductFromFirebase()" class="w-full py-4 bg-red-950 border border-red-700/50 squircle-lg flex items-center justify-center gap-2 text-sm text-red-100 font-bold btn-interactive">🗑️ حذف المنتج نهائياً</button>
+                <button onclick="triggerEditFromDetails()" class="w-full py-3 bg-zinc-900 border border-white/5 squircle-lg flex items-center justify-center gap-2 text-xs text-white font-bold btn-interactive">✏️ تعديل بيانات المنتج</button>
+                <button onclick="deleteProductFromFirebase()" class="w-full py-3 bg-red-950 border border-red-700/50 squircle-lg flex items-center justify-center gap-2 text-xs text-red-100 font-bold btn-interactive">🗑️ حذف المنتج نهائياً</button>
             ` : '';
             updateDetailsModalValues(snack);
             document.getElementById('detailsModal').style.display = 'flex';
@@ -686,22 +837,102 @@
                 calcLabel.innerText = `(${snack.carbs}G × ${activeMultiplier})`;
                 calcLabel.classList.remove('hidden');
             } else { calcLabel.classList.add('hidden'); }
+            
             const btn = document.getElementById('detAddBtn');
             if (activeDetailsId in selectedItemsMap) {
-                btn.className = "w-full py-4 bg-red-950/80 border border-red-700/40 text-red-200 squircle-lg font-bold btn-interactive";
-                btn.innerHTML = `🗑️ إزالة المنتج من الحسبة`;
+                const savedQty = selectedItemsMap[activeDetailsId];
+                if (activeMultiplier !== savedQty) {
+                    btn.className = "py-3.5 bg-blue-600 text-white squircle-lg font-bold text-xs btn-interactive shadow-lg flex items-center justify-center gap-1.5";
+                    btn.innerHTML = `🔄 تحديث كمية المنتج`;
+                } else {
+                    btn.className = "py-3.5 bg-red-950/80 border border-red-700/40 text-red-200 squircle-lg font-bold text-xs btn-interactive flex items-center justify-center gap-1.5";
+                    btn.innerHTML = `🗑️ إزالة من المقادير`;
+                }
             } else {
-                btn.className = "w-full py-4 bg-green-500 text-black squircle-lg font-bold text-sm shadow-lg btn-interactive";
-                btn.innerHTML = `＋ إضافة المنتج للإجمالي`;
+                btn.className = "py-3.5 bg-green-500 text-black squircle-lg font-bold text-xs btn-interactive shadow-lg flex items-center justify-center gap-1.5";
+                btn.innerHTML = `＋ إضافة للمقادير`;
             }
         }
 
         function toggleSelectFromDetails() {
             if (!activeDetailsId) return;
-            if (activeDetailsId in selectedItemsMap) { delete selectedItemsMap[activeDetailsId]; activeMultiplier = 1; }
-            else { selectedItemsMap[activeDetailsId] = activeMultiplier; }
+            if (activeDetailsId in selectedItemsMap) {
+                const savedQty = selectedItemsMap[activeDetailsId];
+                if (activeMultiplier === savedQty) {
+                    delete selectedItemsMap[activeDetailsId];
+                    showToast("تمت إزالة المنتج من المقادير");
+                } else {
+                    selectedItemsMap[activeDetailsId] = activeMultiplier;
+                    showToast("تم تحديث الكمية والمقادير بنجاح");
+                }
+            } else {
+                selectedItemsMap[activeDetailsId] = activeMultiplier;
+                showToast("تمت الإضافة للمقادير");
+            }
             localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
             closeModal('detailsModal'); updateStats(); render();
+        }
+
+        function toggleCompareItemFromDetails() {
+            if (!activeDetailsId) return;
+            if (compareItems.includes(activeDetailsId)) {
+                compareItems = compareItems.filter(id => id !== activeDetailsId);
+                showToast("تمت الإزالة من المقارنة");
+            } else {
+                if (compareItems.length >= 2) {
+                    showToast("يمكنك مقارنة منتجين فقط في نفس الوقت! قم بإزالة أحدهما أولاً.", "error");
+                    return;
+                }
+                compareItems.push(activeDetailsId);
+                showToast("تمت الإضافة لقائمة المقارنة ⚖️");
+            }
+            closeModal('detailsModal');
+        }
+
+        function openSettingsModal() {
+            document.getElementById('settingsRatioValue').innerText = ratio;
+            document.getElementById('correctionToggle').checked = correctionSettings.enabled;
+            document.getElementById('targetSugarInput').value = correctionSettings.target;
+            document.getElementById('isfInput').value = correctionSettings.isf;
+            toggleCorrectionUI(correctionSettings.enabled);
+            document.getElementById('settingsModal').style.display = 'flex';
+        }
+
+        function changeRatioSettings(val) {
+            ratio = Math.max(1, ratio + val);
+            document.getElementById('settingsRatioValue').innerText = ratio;
+        }
+
+        function toggleCorrectionUI(show) {
+            const fields = document.getElementById('correctionFields');
+            if (show) fields.classList.remove('hidden');
+            else fields.classList.add('hidden');
+        }
+
+        function saveSettings() {
+            const isEnabled = document.getElementById('correctionToggle').checked;
+            const target = parseInt(document.getElementById('targetSugarInput').value) || 100;
+            const isf = parseInt(document.getElementById('isfInput').value) || 50;
+            
+            ratio = parseInt(document.getElementById('settingsRatioValue').innerText);
+            localStorage.setItem('dosage_pro_ratio', ratio.toString());
+            
+            correctionSettings = { enabled: isEnabled, target: target, isf: isf };
+            localStorage.setItem('dosage_pro_correction_settings', JSON.stringify(correctionSettings));
+            
+            applyCorrectionUIState();
+            updateStats();
+            closeModal('settingsModal');
+            showToast("تم حفظ الإعدادات بنجاح");
+        }
+
+        function applyCorrectionUIState() {
+            const zone = document.getElementById('footerCorrectionZone');
+            if (correctionSettings.enabled && activeAppSection !== null) {
+                zone.classList.remove('hidden');
+            } else {
+                zone.classList.add('hidden');
+            }
         }
 
         function updateStats() {
@@ -712,8 +943,175 @@
             });
             const displayCarbs = Math.round(total * 10) / 10;
             document.getElementById('totalCarbs').innerText = displayCarbs.toFixed(1);
-            const dose = displayCarbs / ratio;
-            document.getElementById('insulinDose').innerText = dose === 0 ? "0.0" : dose.toFixed(1);
+            
+            let carbDose = displayCarbs / ratio;
+            let correctionDose = 0;
+            let isHypo = false;
+            
+            if (correctionSettings.enabled) {
+                const currentSugarInput = document.getElementById('currentBloodSugarInput');
+                const currentSugar = parseFloat(currentSugarInput ? currentSugarInput.value : 0) || 0;
+                
+                if (currentSugar > 0 && currentSugar < 70) {
+                    isHypo = true;
+                } else if (currentSugar > correctionSettings.target) {
+                    correctionDose = (currentSugar - correctionSettings.target) / correctionSettings.isf;
+                }
+            }
+
+            const breakdownLabel = document.getElementById('doseBreakdownText');
+            if (isHypo) {
+                document.getElementById('insulinDose').innerText = "0.0";
+                breakdownLabel.innerHTML = `<span class="text-red-500 font-bold animate-pulse">⚠️ خطر هبوط! تناول سكر فوراً</span>`;
+            } else {
+                let totalDose = carbDose + correctionDose;
+                document.getElementById('insulinDose').innerText = totalDose === 0 ? "0.0" : totalDose.toFixed(1);
+                
+                if (correctionDose > 0) {
+                    breakdownLabel.innerText = `(${carbDose.toFixed(1)} كارب + ${correctionDose.toFixed(1)} تصحيح)`;
+                } else {
+                    breakdownLabel.innerText = "";
+                }
+            }
+        }
+
+        function saveCurrentMealToHistory() {
+            let totalCarbs = parseFloat(document.getElementById('totalCarbs').innerText) || 0;
+            if (totalCarbs === 0) { showToast("لا توجد مقادير مضافة لحفظها في السجل!", "error"); return; }
+            let dose = document.getElementById('insulinDose').innerText;
+            
+            let itemsNames = [];
+            Object.keys(selectedItemsMap).forEach(id => {
+                const snack = snacks.find(s => s.id === parseInt(id));
+                if (snack) itemsNames.push(`${snack.name} (×${selectedItemsMap[id]})`);
+            });
+            
+            let history = JSON.parse(localStorage.getItem('dosage_pro_history_logs')) || [];
+            let newLog = {
+                id: Date.now(),
+                dateTime: new Date().toLocaleString('ar-SA', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' }),
+                carbs: totalCarbs,
+                dose: dose,
+                ratio: ratio,
+                items: itemsNames.join('، ') || 'وجبة يدوية سريعة'
+            };
+            history.unshift(newLog); 
+            localStorage.setItem('dosage_pro_history_logs', JSON.stringify(history));
+            showToast("تم حفظ الوجبة في السجل بنجاح 🕒");
+        }
+
+        function openHistoryModal() {
+            const container = document.getElementById('historyItemsContainer');
+            const history = JSON.parse(localStorage.getItem('dosage_pro_history_logs')) || [];
+            
+            if (history.length === 0) {
+                container.innerHTML = `<div class="text-center text-zinc-600 text-xs py-20">لا توجد وجبات محفوظة في السجل بعد.</div>`;
+            } else {
+                container.innerHTML = history.map((log, index) => `
+                    <div class="bg-zinc-900/80 p-4 rounded-xl border border-white/5 flex flex-col gap-2 relative">
+                        <div class="flex justify-between items-start">
+                            <div class="flex flex-col gap-1 flex-1 pl-12">
+                                <span class="text-[10px] text-zinc-500">📅 ${log.dateTime}</span>
+                                <p class="text-xs text-zinc-300 font-bold mt-0.5 leading-relaxed">${log.items || 'وجبة عامة'}</p>
+                            </div>
+                            <button onclick="deleteHistoryItem(${index})" class="text-[10px] text-red-400 font-bold bg-red-950/20 px-2 py-1 rounded border border-red-900/30 active:scale-95 transition-transform btn-interactive">🗑️ حذف</button>
+                        </div>
+                        <div class="flex justify-between items-center border-t border-white/5 pt-2 mt-1">
+                            <span class="text-xs text-zinc-400">إجمالي الكارب: <strong class="text-green-400">${log.carbs}G</strong> (Ratio: 1:${log.ratio})</span>
+                            <div class="text-left">
+                                <span class="text-xl font-bold text-green-400">${log.dose} <span class="text-[9px]">وحدة</span></span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            document.getElementById('historyModal').style.display = 'flex';
+        }
+
+        function deleteHistoryItem(index) {
+            showCustomConfirm("حذف الوجبة", "هل أنت متأكد من حذف هذه الوجبة من السجل؟", "🗑️", () => {
+                let history = JSON.parse(localStorage.getItem('dosage_pro_history_logs')) || [];
+                history.splice(index, 1);
+                localStorage.setItem('dosage_pro_history_logs', JSON.stringify(history));
+                openHistoryModal();
+                showToast("تم حذف الوجبة من السجل بنجاح");
+            });
+        }
+
+        function openCompareModal() {
+            const grid = document.getElementById('compareGrid');
+            const placeholder = document.getElementById('comparePlaceholder');
+            
+            if (compareItems.length === 0) {
+                grid.innerHTML = '';
+                placeholder.classList.remove('hidden');
+            } else {
+                placeholder.classList.add('hidden');
+                grid.innerHTML = compareItems.map(id => {
+                    const snack = snacks.find(s => s.id === id);
+                    if (!snack) return '';
+                    return `
+                        <div class="bg-zinc-900/80 border border-white/10 rounded-2xl p-4 text-center flex flex-col items-center">
+                            <div class="w-16 h-16 bg-black/40 rounded-xl p-1 mb-3 border border-white/5 flex items-center justify-center">
+                                <img src="${snack.img || 'https://placehold.co/100x100/141414/666?text=Snack'}" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <h4 class="text-xs font-bold text-white mb-3 max-w-full truncate">${snack.name}</h4>
+                            <div class="w-full bg-black/30 py-2 rounded-lg mb-2 border border-white/5">
+                                <span class="text-[10px] text-zinc-400 block">الكربوهيدرات</span>
+                                <span class="text-sm font-bold text-green-400">${snack.carbs}G</span>
+                            </div>
+                            <div class="w-full bg-black/30 py-2 rounded-lg mb-3 border border-white/5">
+                                <span class="text-[10px] text-zinc-400 block">السعرات</span>
+                                <span class="text-sm font-bold text-orange-400">${snack.cal} 🔥</span>
+                            </div>
+                            <button onclick="removeCompareItem(${snack.id})" class="text-[10px] text-red-400 font-bold underline mt-1">إزالة</button>
+                        </div>
+                    `;
+                }).join('');
+            }
+            document.getElementById('compareModal').style.display = 'flex';
+        }
+
+        function removeCompareItem(id) {
+            compareItems = compareItems.filter(cId => cId !== id);
+            openCompareModal();
+            showToast("تمت إزالة المنتج من المقارنة");
+        }
+
+        function shareMealViaWhatsApp() {
+            let totalCarbs = parseFloat(document.getElementById('totalCarbs').innerText) || 0;
+            if (totalCarbs === 0) { showToast("لا توجد حسبة حالية لمشاركتها!", "error"); return; }
+            let dose = document.getElementById('insulinDose').innerText;
+            
+            let messageText = `📊 *تقرير وجبة وجرعة الإنسولين - Dosage Pro* \n\n`;
+            messageText += `🍽️ *تفاصيل أصناف الوجبة:* \n`;
+            
+            Object.keys(selectedItemsMap).forEach(id => {
+                const snack = snacks.find(s => s.id === parseInt(id));
+                if (snack) {
+                    const qty = selectedItemsMap[id];
+                    const itemTotalCarbs = (snack.carbs * qty).toFixed(1);
+                    messageText += `• ${snack.name} (×${qty}) -> ${itemTotalCarbs}G كارب\n`;
+                }
+            });
+            
+            messageText += `\n🍞 *إجمالي الكربوهيدرات الكلي:* ${totalCarbs} جرام\n`;
+            messageText += `📈 *معامل الكارب (Ratio):* 1:${ratio}\n`;
+            
+            if (correctionSettings.enabled) {
+                const sugarInput = document.getElementById('currentBloodSugarInput');
+                const currentSugar = parseFloat(sugarInput ? sugarInput.value : 0) || 0;
+                if (currentSugar > 0) {
+                    messageText += `🩸 *قراءة السكر الحالي:* ${currentSugar} mg/dL\n`;
+                    messageText += `🎯 *السكر المستهدف:* ${correctionSettings.target}\n`;
+                }
+            }
+            
+            messageText += `💉 *الجرعة المقترحة المحسوبة:* ${dose} وحدة إنسولين\n\n`;
+            messageText += `📱 *تم الحساب بدقة عبر تطبيق Carbs sa*`;
+            
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(messageText)}`;
+            window.open(whatsappUrl, '_blank');
         }
 
         function triggerClearAll() {
@@ -721,8 +1119,10 @@
             showCustomConfirm("تصفير الحسبة", "هل تريد مسح جميع المنتجات المحددة وتفريغ القائمة بالكامل؟", "🧹", () => {
                 selectedItemsMap = {};
                 localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
+                const sugarInput = document.getElementById('currentBloodSugarInput');
+                if(sugarInput) sugarInput.value = '';
                 updateStats(); render();
-                showToast("تم تصفير الحسبة");
+                showToast("تم تصفير الحسبة بنجاح");
             });
         }
 
@@ -742,110 +1142,110 @@
             document.getElementById('editModal').style.display = 'flex';
         }
 
-        function deleteProductFromFirebase() {
-            if (!isAdmin() || !activeDetailsId) return;
-            showCustomConfirm("حذف المنتج", "هل أنت متأكد من حذف هذا المنتج نهائياً من قاعدة البيانات؟", "🗑️", () => {
-                const idToDelete = activeDetailsId;
-                closeModal('detailsModal');
-                fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${idToDelete}.json?auth=${getSavedAdminKey()}`, { method: 'DELETE' })
-                .then(res => {
-                    if (!res.ok) throw new Error();
-                    delete selectedItemsMap[idToDelete];
-                    localStorage.setItem('dosage_pro_selected_map', JSON.stringify(selectedItemsMap));
-                    updateStats();
-                    showToast("تم الحذف بنجاح");
-                }).catch(() => showToast("فشلت العملية: تم رفض الصلاحيات", "error"));
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.style.display = 'none';
+        }
+
+        document.getElementById('detailsModal').addEventListener('click', function(e) {
+            if(e.target === this) { closeModal('detailsModal'); }
+        });
+
+        function openAddModal() { document.getElementById('addModal').style.display = 'flex'; }
+        function openFeedbackModal() { document.getElementById('feedbackModal').style.display = 'flex'; }
+
+        function saveProductEdits() {
+            const id = document.getElementById('editId').value;
+            if(!id) return;
+            const updatedData = {
+                name: document.getElementById('editName').value,
+                type: document.getElementById('editCategory').value,
+                brand: document.getElementById('editBrand').value,
+                info: document.getElementById('editInfo').value,
+                weight: document.getElementById('editWeight').value,
+                carbs: parseFloat(document.getElementById('editCarbs').value) || 0,
+                cal: parseInt(document.getElementById('editCal').value) || 0,
+                img: document.getElementById('editImg').value
+            };
+            db.ref('products/' + id).update(updatedData, (error) => {
+                if (error) { showToast("فشل التحديث", "error"); } 
+                else { showToast("تم تحديث المنتج بنجاح!"); closeModal('editModal'); }
             });
         }
 
-        function openAddModal() { if (isAdmin()) document.getElementById('addModal').style.display = 'flex'; }
-        function openFeedbackModal() { document.getElementById('feedbackModal').style.display = 'flex'; }
-        function openAdminFeedbacksListModal() { if (isAdmin()) document.getElementById('adminFeedbacksModal').style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-        function saveProductEdits() {
-            if (!isAdmin()) return;
-            const id = parseInt(document.getElementById('editId').value);
-            const name = document.getElementById('editName').value.trim();
-            const type = document.getElementById('editCategory').value;
-            const brand = document.getElementById('editBrand').value;
-            const info = document.getElementById('editInfo').value.trim();
-            const weight = document.getElementById('editWeight').value.trim() || '0g';
-            const carbs = parseFloat(document.getElementById('editCarbs').value) || 0;
-            const cal = parseInt(document.getElementById('editCal').value) || 0;
-            const img = document.getElementById('editImg').value.trim();
-            if (!name || carbs <= 0) { showToast('تأكد من إدخال البيانات بشكل صحيح', 'error'); return; }
-            
-            fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${id}.json?auth=${getSavedAdminKey()}`, {
-                method: 'PUT', body: JSON.stringify({ id, name, carbs, cal, weight, type, img, brand, info })
-            }).then(res => { 
-                if (!res.ok) throw new Error(); 
-                closeModal('editModal');
-                showToast("تم حفظ التعديلات بنجاح");
-            }).catch(() => showToast("فشلت العملية: الرمز غير صحيح.", "error"));
+        function deleteProductFromFirebase() {
+            if (!activeDetailsId || !isAdmin()) return;
+            showCustomConfirm("حذف منتج", "هل أنت متأكد من حذف هذا المنتج نهائياً من قاعدة البيانات؟", "🗑️", () => {
+                db.ref('products/' + activeDetailsId).remove((error) => {
+                    if (error) { showToast("فشل الحذف", "error"); } 
+                    else { showToast("تم حذف المنتج بنجاح"); closeModal('detailsModal'); }
+                });
+            });
         }
 
         function addNewSnack() {
-            if (!isAdmin()) return;
-            const name = document.getElementById('newName').value.trim();
-            const type = document.getElementById('newCategory').value;
-            const brand = document.getElementById('newBrand').value;
-            const info = document.getElementById('newInfo').value.trim();
-            const weight = document.getElementById('newWeight').value.trim() || '0g';
-            const carbs = parseFloat(document.getElementById('newCarbs').value) || 0;
-            const cal = parseInt(document.getElementById('newCal').value) || 0;
-            const img = document.getElementById('newImg').value.trim();
-            if (!name || carbs <= 0) { showToast('تأكد من صحة البيانات والمقادير', 'error'); return; }
-            
-            // حل مشكلة تضارب المعرفات بدمج الوقت برقم عشوائي لضمان استحالة التكرار
-            const newId = Date.now() + Math.floor(Math.random() * 1000);
-            
-            fetch(`https://carb-sa-default-rtdb.firebaseio.com/products/${newId}.json?auth=${getSavedAdminKey()}`, {
-                method: 'PUT', body: JSON.stringify({ id: newId, name, carbs, cal, weight, type, img, brand, info })
-            }).then(res => {
-                if (!res.ok) throw new Error();
-                ['newName','newWeight','newCarbs','newCal','newImg','newInfo'].forEach(id => document.getElementById(id).value = '');
-                closeModal('addModal');
-                showToast("تم إضافة المنتج الجديد");
-            }).catch(() => showToast("فشلت العملية: تم رفض الطلب.", "error"));
+            const id = Date.now();
+            const newData = {
+                name: document.getElementById('newName').value,
+                type: document.getElementById('newCategory').value,
+                brand: document.getElementById('newBrand').value,
+                info: document.getElementById('newInfo').value,
+                weight: document.getElementById('newWeight').value,
+                carbs: parseFloat(document.getElementById('newCarbs').value) || 0,
+                cal: parseInt(document.getElementById('newCal').value) || 0,
+                img: document.getElementById('newImg').value
+            };
+            if(!newData.name) { showToast("الرجاء كتابة اسم المنتج", "error"); return; }
+            db.ref('products/' + id).set(newData, (error) => {
+                if (error) { showToast("فشل الإضافة", "error"); } 
+                else { 
+                    showToast("تم إضافة المنتج بنجاح!"); 
+                    closeModal('addModal');
+                    document.getElementById('newName').value = '';
+                    document.getElementById('newInfo').value = '';
+                    document.getElementById('newWeight').value = '';
+                    document.getElementById('newCarbs').value = '';
+                    document.getElementById('newCal').value = '';
+                    document.getElementById('newImg').value = '';
+                }
+            });
         }
 
         function sendFeedbackToFirebase() {
-            const text = document.getElementById('feedbackText').value.trim(); if (!text) return;
-            const feedbackId = Date.now() + Math.floor(Math.random() * 100);
-            db.ref('feedbacks/' + feedbackId).set({ id: feedbackId, message: text, time: new Date().toLocaleString('ar-SA') })
-            .then(() => { 
-                showToast('تم إرسال مقترحك بنجاح ❤️'); 
-                document.getElementById('feedbackText').value = ''; 
-                closeModal('feedbackModal'); 
+            const text = document.getElementById('feedbackText').value.trim();
+            if(!text) { showToast("الرجاء كتابة اقتراحك أولاً", "error"); return; }
+            const id = Date.now();
+            db.ref('feedbacks/' + id).set({
+                text: text,
+                timestamp: new Date().toLocaleString('ar-SA')
+            }, (error) => {
+                if (error) { showToast("فشل إرسال المقترح", "error"); } 
+                else { 
+                    showToast("شكراً لك، تم إرسال مقترحك بنجاح 🚀"); 
+                    document.getElementById('feedbackText').value = '';
+                    closeModal('feedbackModal'); 
+                }
             });
         }
 
         function listenToFeedbacksLive() {
-            if (!isAdmin()) return;
-            const container = document.getElementById('feedbacksItemsContainer'); if (!container) return;
             db.ref('feedbacks').on('value', (snapshot) => {
                 const data = snapshot.val();
-                if (!data) { container.innerHTML = `<div class="text-center text-zinc-600 text-xs py-10">لا توجد شكاوى 🌟</div>`; return; }
-                container.innerHTML = Object.keys(data).sort((a, b) => b - a).filter(id => data[id]).map(id =>
-                    `<div class="bg-zinc-900/80 p-4 rounded-xl border border-white/5 text-right">
-                        <div class="text-[10px] text-zinc-500">🕒 ${data[id].time}</div>
-                        <p class="text-xs text-white">${data[id].message}</p>
-                    </div>`
-                ).join('');
+                const container = document.getElementById('feedbacksItemsContainer');
+                if(!container) return;
+                if(!data) {
+                    container.innerHTML = `<div class="text-center text-zinc-600 text-xs py-10">الصندوق فارغ</div>`;
+                    return;
+                }
+                container.innerHTML = Object.keys(data).map(id => `
+                    <div class="bg-zinc-900/80 p-4 rounded-xl border border-white/5 flex flex-col gap-1 text-right">
+                        <span class="text-[9px] text-zinc-500">${data[id].timestamp || ''}</span>
+                        <p class="text-xs text-white leading-relaxed">${data[id].text}</p>
+                    </div>
+                `).join('');
             });
         }
-
-        function exportCurrentCodeToHTML() {
-            if (!isAdmin()) return;
-            const blob = new Blob(["<!DOCTYPE html>\n" + document.documentElement.outerHTML], { type: "text/html" });
-            const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "index.html";
-            document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            showToast("تم تصدير ملف النسخة الاحتياطية بنجاح");
-        }
-
-        document.getElementById('ratioValue').innerText = ratio;
+        function openAdminFeedbacksListModal() { document.getElementById('adminFeedbacksModal').style.display = 'flex'; }
     </script>
 </body>
 </html>
-
