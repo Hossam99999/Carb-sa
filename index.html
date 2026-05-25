@@ -40,13 +40,12 @@
         .squircle-lg { border-radius: 18px; }
         .squircle-md { border-radius: 12px; }
         
-        /* 🌟 التأثير التفاعلي المطور للتعليق والضغط الملموس هيدروليكياً */
+        /* تأثير التعليق والضغط الملموس هيدروليكياً */
         .btn-interactive {
             transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s ease, box-shadow 0.25s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             will-change: transform, box-shadow;
         }
-        /* طول ما المستخدم معلق إصبعك كذا بينزل تحت وينضغط */
         .btn-interactive:active {
             transform: scale(0.93) translateY(2px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -69,7 +68,7 @@
             border: 1px solid rgba(34, 197, 94, 0.3) !important; 
         }
         
-        /* تصميم الكبسولات النشطة */
+        /* الكبسولات النشطة */
         .capsule-active { 
             color: #ffffff !important; 
             font-weight: 700 !important;
@@ -111,7 +110,7 @@
     </div>
 
     <div id="appMainContent" class="relative z-10" style="display: none;">
-        <header id="appHeader" class="sticky top-0 z-40 bg-black/90 border-b border-white/5 p-4 backdrop-blur-xl">
+        <header id="appHeader" class="sticky top-0 z-40 bg-black/90 border-b border-b-zinc-900 p-4 backdrop-blur-xl">
             <div class="max-w-md mx-auto flex flex-col gap-3.5">
                 <div class="flex justify-between items-center w-full">
                     <div class="flex items-center gap-2">
@@ -134,9 +133,9 @@
                 </div>
                 
                 <div id="capsuleBarContainer" class="w-full bg-[#161618] rounded-full p-1 flex items-center gap-1 border border-white/[0.03]">
-                    <div class="px-2.5 flex items-center justify-center border-l border-zinc-800 text-[#3b82f6] font-bold text-sm">
+                    <button onclick="toggleCapsuleBarVisibility(false)" style="-webkit-tap-highlight-color:transparent;" class="px-3 h-7 flex items-center justify-center border-l border-zinc-800 text-green-500 font-bold text-base btn-interactive outline-none">
                         ☰
-                    </div>
+                    </button>
                     <div id="capsuleScrollArea" class="flex-1 flex gap-1 overflow-x-auto no-scrollbar scroll-smooth px-1 py-0.5">
                         <button onclick="selectCategory('all', 'الكل')" id="capsule-all" class="px-4 py-1.5 text-xs text-zinc-400 rounded-full font-medium transition-all btn-interactive whitespace-nowrap capsule-active">الكل</button>
                         <div id="dynamicCapsulesInline" class="flex gap-1"></div>
@@ -144,6 +143,8 @@
                 </div>
                 
                 <div class="flex gap-2 w-full relative">
+                    <button id="showCapsuleBarBtn" onclick="toggleCapsuleBarVisibility(true)" class="h-10 px-3 bg-zinc-900 border border-white/10 rounded-full text-green-500 font-bold text-xs btn-interactive hidden items-center justify-center">☰ القوائم</button>
+                    
                     <button id="restaurantBackBtn" onclick="resetRestaurantBrandFilter()" class="h-10 px-4 bg-zinc-900 text-zinc-400 text-xs font-bold rounded-full border border-white/10 btn-interactive hidden items-center justify-center gap-1">↩ كل المطاعم</button>
                     <input type="text" id="searchInput" oninput="render()" placeholder="ابحث عن منتجك المفضل..." class="flex-1 p-2.5 rounded-full bg-zinc-900 text-right outline-none border border-white/5 text-xs text-white placeholder-zinc-500">
                 </div>
@@ -414,16 +415,30 @@
                 document.getElementById('capsuleBarContainer').style.display = 'none';
                 document.getElementById('restaurantBrandsGrid').classList.remove('hidden');
                 document.getElementById('restaurantBackBtn').style.display = 'none';
+                document.getElementById('showCapsuleBarBtn').style.display = 'none';
             } else {
                 currentCategory = 'all';
                 document.getElementById('capsuleBarContainer').style.display = 'flex';
                 document.getElementById('restaurantBrandsGrid').classList.add('hidden');
                 document.getElementById('restaurantBackBtn').style.display = 'none';
+                document.getElementById('showCapsuleBarBtn').style.display = 'none';
             }
             document.getElementById('searchInput').value = '';
             buildInlineCapsulesMenu();
             render();
             window.scrollTo(0, 0);
+        }
+
+        function toggleCapsuleBarVisibility(show) {
+            const bar = document.getElementById('capsuleBarContainer');
+            const btn = document.getElementById('showCapsuleBarBtn');
+            if (show) {
+                bar.style.display = 'flex';
+                btn.style.display = 'none';
+            } else {
+                bar.style.display = 'none';
+                btn.style.display = 'flex';
+            }
         }
 
         function selectRestaurantBrand(brand) {
@@ -695,7 +710,7 @@
             const text = document.getElementById('feedbackText').value.trim(); if (!text) return;
             const feedbackId = Date.now();
             db.ref('feedbacks/' + feedbackId).set({ id: feedbackId, message: text, time: new Date().toLocaleString('ar-SA') })
-            .then(() => { alert('تم الإرسال بنجاح '); document.getElementById('feedbackText').value = ''; closeModal('feedbackModal'); });
+            .then(() => { alert('تم الإرسال بنجاح ❤️'); document.getElementById('feedbackText').value = ''; closeModal('feedbackModal'); });
         }
 
         function listenToFeedbacksLive() {
